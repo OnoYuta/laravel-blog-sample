@@ -1,8 +1,8 @@
+<p><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+
 # laravel-blog-sample
 
 Sample blog project featuring many basic and general topics of Laravel 6.x.
-
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 ## Topics
 
@@ -120,4 +120,4 @@ This project has the following directory structure:
 
 ## License
 
-The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Sample blog project is released under the [MIT license](https://opensource.org/licenses/MIT).
