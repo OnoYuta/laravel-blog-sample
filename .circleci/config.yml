@@ -1,24 +1,11 @@
-# PHP CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-php/ for more details
-#
 version: 2.1
 jobs:
   build:
     docker:
       # Specify the version you desire here
       - image: circleci/php:7.4-node-browsers
-      - image: circleci/mysql:5.7
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # Using the RAM variation mitigates I/O contention
-      # for database intensive operations.
-      # - image: circleci/mysql:5.7-ram
-      #
-      # - image: redis:2.8.19
-
+      - image: circleci/mysql:8.0.17
+        command: mysqld --default-authentication-plugin=mysql_native_password
     environment:
       - APP_DEBUG: true
       - APP_ENV: testing
@@ -31,11 +18,16 @@ jobs:
     steps:
       - checkout
       
-      # Install PHP Extension
-      - run: sudo docker-php-ext-install pdo_mysql
+      - run:
+          name: install dockerize
+          command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+          environment:
+            DOCKERIZE_VERSION: v0.6.1
 
-      - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
-      - run: sudo docker-php-ext-install zip
+      # Install PHP Extension
+      - run:
+          name: Install PHP Extensions
+          command: sudo docker-php-ext-install pdo_mysql
 
       # Download and cache dependencies
       - restore_cache:
@@ -45,16 +37,25 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: composer install -n --prefer-dist
+      - run:
+          name: composer install
+          command: composer install -n --prefer-dist
 
       - save_cache:
           key: v1-dependencies-{{ checksum "composer.json" }}
           paths:
             - ./vendor
 
+      - run:
+          name: Wait for db
+          command: dockerize -wait tcp://localhost:3306 -timeout 1m
+
       # run seeding
-      - run: php artisan migrate
-      - run: php artisan db:seed
+      - run:
+          name: Migration & Seeding
+          command: php artisan migrate --seed
 
       # run unit test
-      - run: ./vendor/bin/phpunit
+      - run:
+          name: Unittest
+          command: ./vendor/bin/phpunit
