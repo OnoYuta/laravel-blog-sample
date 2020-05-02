@@ -9,6 +9,7 @@ jobs:
     environment:
       - APP_DEBUG: true
       - APP_ENV: testing
+      - APP_URL: http://localhost:8000
       - APP_KEY: base64:oXcJUWyOyM7lEV9lRjNmfLSP8d+wMyQ5HKLoyThB/9I=
       - DB_CONNECTION: circle_test
       - MYSQL_ALLOW_EMPTY_PASSWORD: true
@@ -50,12 +51,28 @@ jobs:
           name: Wait for db
           command: dockerize -wait tcp://localhost:3306 -timeout 1m
 
-      # run seeding
       - run:
           name: Migration & Seeding
           command: php artisan migrate --seed
 
-      # run unit test
       - run:
           name: Unittest
           command: ./vendor/bin/phpunit
+      
+      - run:
+          name: Install Chrome Driver
+          command: php artisan dusk:chrome-driver 72
+
+      - run:
+          name: Start Chrome Driver
+          command: ./vendor/laravel/dusk/bin/chromedriver-linux
+          background: true
+
+      - run:
+          name: Start Laravel Server
+          command: php artisan serve
+          background: true
+
+      - run:
+          name: Run Dusk
+          command: php artisan dusk
