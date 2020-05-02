@@ -1,8 +1,8 @@
 version: 2.1
-jobs:
-  build:
+executors:
+  default:
+    working_directory: ~/repo
     docker:
-      # Specify the version you desire here
       - image: circleci/php:7.4-node-browsers
       - image: circleci/mysql:8.0.17
         command: mysqld --default-authentication-plugin=mysql_native_password
@@ -13,66 +13,79 @@ jobs:
       - APP_KEY: base64:oXcJUWyOyM7lEV9lRjNmfLSP8d+wMyQ5HKLoyThB/9I=
       - DB_CONNECTION: circle_test
       - MYSQL_ALLOW_EMPTY_PASSWORD: true
-
-    working_directory: ~/repo
-
+commands:
+  install-dockerize:
     steps:
-      - checkout
-      
       - run:
-          name: install dockerize
+          name: Install dockerize
           command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
           environment:
             DOCKERIZE_VERSION: v0.6.1
-
-      # Install PHP Extension
+  install-php-extensions:
+    steps:
       - run:
           name: Install PHP Extensions
           command: sudo docker-php-ext-install pdo_mysql
-
-      # Download and cache dependencies
+  restore-cache-composer:
+    steps:
       - restore_cache:
           keys:
-            # "composer.lock" can be used if it is committed to the repo
             - v1-dependencies-{{ checksum "composer.json" }}
-            # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-
+  composer-install:
+    steps:
       - run:
           name: composer install
           command: composer install -n --prefer-dist
-
+  save-cache-composer:
+    steps:
       - save_cache:
-          key: v1-dependencies-{{ checksum "composer.json" }}
           paths:
             - ./vendor
-
+          key: v1-dependencies-{{ checksum "composer.json" }}
+  wait-for-mysql:
+    steps:
       - run:
-          name: Wait for db
+          name: Wait for MySQL
           command: dockerize -wait tcp://localhost:3306 -timeout 1m
-
+  migration-seeding:
+    steps:
       - run:
           name: Migration & Seeding
           command: php artisan migrate --seed
-
+  test-unittest:
+    steps:
       - run:
           name: Unittest
           command: ./vendor/bin/phpunit
-      
+  test-e2etest:
+    steps:
       - run:
           name: Install Chrome Driver
           command: php artisan dusk:chrome-driver 72
-
       - run:
           name: Start Chrome Driver
           command: ./vendor/laravel/dusk/bin/chromedriver-linux
           background: true
-
       - run:
           name: Start Laravel Server
           command: php artisan serve
           background: true
-
       - run:
           name: Run Dusk
           command: php artisan dusk
+jobs:
+  build:
+    executor:
+      name: default
+    steps:
+      - checkout
+      - install-dockerize
+      - install-php-extensions
+      - restore-cache-composer
+      - composer-install
+      - save-cache-composer
+      - wait-for-mysql
+      - migration-seeding
+      - test-unittest
+      - test-e2etest
