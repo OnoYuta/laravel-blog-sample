@@ -1,5 +1,3 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
-
 # laravel-blog-sample
 
 Sample blog project featuring many basic and general topics of Laravel 6.x.
