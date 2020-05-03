@@ -15,7 +15,7 @@ class UserLoginTest extends DuskTestCase
 
     public function baseUrl()
     {
-        return 'http://www.blog.sample';
+        return 'http://www.blog.sample:8000';
     }
 
     /**
