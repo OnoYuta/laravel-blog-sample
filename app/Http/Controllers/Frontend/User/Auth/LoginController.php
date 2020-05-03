@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Frontend\Auth;
+namespace App\Http\Controllers\Frontend\User\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -34,7 +35,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest:user')->except('logout');
     }
 
     /**
@@ -55,5 +56,15 @@ class LoginController extends Controller
     public function username()
     {
         return 'username';
+    }
+
+    /**
+     * Get the guard to be used during authentication.
+     *
+     * @return \Illuminate\Contracts\Auth\StatefulGuard
+     */
+    protected function guard()
+    {
+        return Auth::guard('user');
     }
 }

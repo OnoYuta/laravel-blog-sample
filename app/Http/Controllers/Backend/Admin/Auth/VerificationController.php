@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Frontend\Auth;
+namespace App\Http\Controllers\Backend\Admin\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -35,7 +35,7 @@ class VerificationController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth:admin');
         $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
     }
@@ -50,6 +50,6 @@ class VerificationController extends Controller
     {
         return $request->user()->hasVerifiedEmail()
             ? redirect($this->redirectPath())
-            : view('frontend.auth.verify');
+            : view('backend.auth.verify');
     }
 }

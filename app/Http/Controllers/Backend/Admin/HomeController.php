@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Backend\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -14,6 +14,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('frontend.home');
+        return view('backend.home');
     }
 }

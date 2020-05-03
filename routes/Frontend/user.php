@@ -6,6 +6,6 @@ Route::middleware('web')->group(function () {
 });
 
 // user authenticated
-Route::middleware(['web', 'auth'])->group(function () {
+Route::middleware(['web', 'auth:user'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
 });

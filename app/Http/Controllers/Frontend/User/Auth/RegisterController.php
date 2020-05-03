@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Frontend\Auth;
+namespace App\Http\Controllers\Frontend\User\Auth;
 
 use App\Http\Controllers\Controller;
 use App\User;
@@ -37,7 +37,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest:user');
     }
 
     /**

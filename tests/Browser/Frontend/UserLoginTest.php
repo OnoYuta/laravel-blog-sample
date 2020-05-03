@@ -13,6 +13,11 @@ class UserLoginTest extends DuskTestCase
 {
     use WithFaker;
 
+    public function baseUrl()
+    {
+        return 'http://www.blog.sample';
+    }
+
     /**
      * A basic browser test example.
      *
