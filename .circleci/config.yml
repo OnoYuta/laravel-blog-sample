@@ -63,6 +63,11 @@ commands:
       - run:
           name: Migration & Seeding
           command: php artisan migrate --seed
+  test-static-code-analysis:
+    steps:
+      - run:
+          name: Static code analysis
+          command: ./vendor/bin/phpstan analyse
   test-unittest:
     steps:
       - run:
@@ -98,5 +103,6 @@ jobs:
       - save-cache-composer
       - wait-for-mysql
       - migration-seeding
+      - test-static-code-analysis
       - test-unittest
       - test-e2etest
