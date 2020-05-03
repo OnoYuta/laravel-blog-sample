@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Frontend\Auth;
+namespace App\Http\Controllers\Frontend\User\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -35,7 +35,7 @@ class ResetPasswordController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest:user');
     }
 
     /**

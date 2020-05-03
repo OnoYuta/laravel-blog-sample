@@ -8,6 +8,11 @@ use Tests\DuskTestCase;
 
 class ExampleTest extends DuskTestCase
 {
+    public function baseUrl()
+    {
+        return 'http://www.blog.sample:8000';
+    }
+
     /**
      * A basic browser test example.
      *
@@ -17,7 +22,7 @@ class ExampleTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                    ->assertSee('Laravel');
+                ->assertSee('Laravel');
         });
     }
 }

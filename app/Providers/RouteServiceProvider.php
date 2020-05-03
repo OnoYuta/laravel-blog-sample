@@ -40,6 +40,8 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapWebRoutes();
 
         $this->mapUserRoutes();
+
+        $this->mapAdminRoutes();
     }
 
     /**
@@ -72,6 +74,20 @@ class RouteServiceProvider extends ServiceProvider
     }
 
     /**
+     * Define the "admin" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapAdminRoutes()
+    {
+        Route::domain(config('domain.admin_host'))
+            ->namespace($this->namespace . '\Backend\Admin')
+            ->group(base_path('routes/Backend/admin.php'));
+    }
+
+    /**
      * Define the "user" routes for the application.
      *
      * These routes all receive session state, CSRF protection, etc.
@@ -80,7 +96,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapUserRoutes()
     {
-        Route::namespace($this->namespace . '\Frontend')
+        Route::domain(config('domain.user_host'))
+            ->namespace($this->namespace . '\Frontend\User')
             ->group(base_path('routes/Frontend/user.php'));
     }
 }
