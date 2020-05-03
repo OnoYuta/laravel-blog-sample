@@ -53,6 +53,23 @@ commands:
           paths:
             - ./vendor
           key: v1-dependencies-{{ checksum "composer.json" }}
+  restore-cache-yarn:
+    steps:
+      - restore_cache:
+          keys:
+            - node-v1-{{ checksum "package-lock.json" }}
+            - node-v1-
+  yarn-install:
+    steps:
+      - run:
+          name: yarn install
+          command: yarn install
+  save-cache-yarn:
+    steps:
+      - save_cache:
+          paths:
+            - ./node_modules
+          key: node-v1-{{ checksum "package-lock.json" }}
   wait-for-mysql:
     steps:
       - run:
@@ -63,6 +80,11 @@ commands:
       - run:
           name: Migration & Seeding
           command: php artisan migrate --seed
+  test-static-code-analysis:
+    steps:
+      - run:
+          name: Static code analysis
+          command: ./vendor/bin/phpstan analyse
   test-unittest:
     steps:
       - run:
@@ -96,7 +118,11 @@ jobs:
       - restore-cache-composer
       - composer-install
       - save-cache-composer
+      - restore-cache-yarn
+      - yarn-install
+      - save-cache-yarn
       - wait-for-mysql
       - migration-seeding
+      - test-static-code-analysis
       - test-unittest
       - test-e2etest
