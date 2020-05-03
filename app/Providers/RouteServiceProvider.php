@@ -80,7 +80,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapUserRoutes()
     {
-        Route::namespace($this->namespace . '\Frontend')
+        Route::domain(config('domain.user_host'))
+            ->namespace($this->namespace . '\Frontend')
             ->group(base_path('routes/Frontend/user.php'));
     }
 }
