@@ -6,6 +6,7 @@ executors:
       - image: circleci/php:7.4-node-browsers
       - image: circleci/mysql:8.0.17
         command: mysqld --default-authentication-plugin=mysql_native_password
+      - image: mailhog/mailhog
     environment:
       - APP_DEBUG: true
       - APP_ENV: testing
@@ -13,6 +14,12 @@ executors:
       - APP_KEY: base64:oXcJUWyOyM7lEV9lRjNmfLSP8d+wMyQ5HKLoyThB/9I=
       - DB_CONNECTION: circle_test
       - MYSQL_ALLOW_EMPTY_PASSWORD: true
+      - MAIL_DRIVER: smtp
+      - MAIL_HOST: localhost
+      - MAIL_PORT: 1025
+      - MAIL_USERNAME:
+      - MAIL_PASSWORD:
+      - MAIL_ENCRYPTION: ''
 commands:
   add-hosts-for-test:
     steps:
