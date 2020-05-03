@@ -19,11 +19,11 @@ class UserLoginTest extends DuskTestCase
     }
 
     /**
-     * A basic browser test example.
+     * user login
      *
      * @return void
      */
-    public function testAdminCanLogin()
+    public function testUserLogin()
     {
         $password = $this->faker->unique()->safeEmail;
 
@@ -38,6 +38,24 @@ class UserLoginTest extends DuskTestCase
                 ->type('@password', $password)
                 ->press('@submit')
                 ->assertRouteIs('home', []);
+        });
+    }
+
+    /**
+     * user logout
+     *
+     * @return void
+     */
+    public function testUserLogout()
+    {
+        $user = factory(User::class)->create();
+
+        $this->browse(function (Browser $browser) use ($user) {
+            $browser->loginAs($user)
+                ->visit(route('home', [], false))
+                ->click('#navbarDropdown')
+                ->click('@logoutLink')
+                ->assertSee(__('Login'));
         });
     }
 }
