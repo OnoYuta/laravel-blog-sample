@@ -14,11 +14,21 @@ executors:
       - DB_CONNECTION: circle_test
       - MYSQL_ALLOW_EMPTY_PASSWORD: true
 commands:
+  add-hosts-for-test:
+    steps:
+      - run:
+          name: Add hosts for test
+          command: |
+            echo 127.0.0.1 www.blog.sample | sudo tee -a /etc/hosts
+            echo 127.0.0.1 admin.blog.sample | sudo tee -a /etc/hosts
   install-dockerize:
     steps:
       - run:
           name: Install dockerize
-          command: wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+          command: >-
+            wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz &&
+            sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz &&
+            rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
           environment:
             DOCKERIZE_VERSION: v0.6.1
   install-php-extensions:
@@ -80,6 +90,7 @@ jobs:
       name: default
     steps:
       - checkout
+      - add-hosts-for-test
       - install-dockerize
       - install-php-extensions
       - restore-cache-composer

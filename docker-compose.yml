@@ -27,6 +27,9 @@ services:
       - ./public:/app/public
       - ./logs:/var/log/nginx
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    extra_hosts:
+      - "www.blog.sample:127.0.0.1"
+      - "admin.blog.sample:127.0.0.1"
     environment:
       - TZ=${TZ}
   mysql:
