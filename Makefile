@@ -24,7 +24,6 @@ test:
 
 .PHONY: dusk
 dusk:
-	php artisan migrate:refresh --seed --env=testing && \
 	php artisan dusk --env=testing
 
 .PHONY: analyse
