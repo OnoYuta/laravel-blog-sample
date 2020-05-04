@@ -8,6 +8,12 @@ This project is featuring many basic and general topics like below:
 
 * Continuous integration(CircleCI/PHPUnit/Dusk/ChromeDriver)
 * Infrastructure as code(Docker/DockerHub/DockerCompose)
+* Static code analyse(PHPStan/CircleCI)
+* Coding rules check and fix automatically(PSR12/PHP_CodeSniffer)
+* Email sending test(MailHog/CircleCI)
+* Subdomain routing(RouteGroup)
+* Multiple authentication(Guard/Middleware/Hash)
+* PasswordReset(PasswordBroker)
 
 ## Environments
 
