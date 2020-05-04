@@ -33,7 +33,7 @@ class UserLoginTest extends DuskTestCase
         ]);
 
         $this->browse(function (Browser $browser) use ($user, $password) {
-            $browser->visit(new UserLoginPage)
+            $browser->visit(new UserLoginPage())
                 ->type('@username', $user->username)
                 ->type('@password', $password)
                 ->press('@submit')
