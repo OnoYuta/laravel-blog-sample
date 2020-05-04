@@ -31,9 +31,9 @@ class AdminResetPasswordTest extends DuskTestCase
         $user = factory(Administrator::class)->create();
 
         $this->browse(function (Browser $browser) use ($user) {
-            $browser->visit(new AdminLoginPage)
+            $browser->visit(new AdminLoginPage())
                 ->clickLink(__('Forgot Your Password?'))
-                ->on(new AdminForgotPasswordPage)
+                ->on(new AdminForgotPasswordPage())
                 ->type('@email', $user->email)
                 ->press('@submit')
                 ->assertSee(__(Password::RESET_LINK_SENT));
