@@ -87,6 +87,11 @@ commands:
       - run:
           name: Migration & Seeding
           command: php artisan migrate --seed
+  coding-rules-check:
+    steps:
+      - run:
+          name: Coding rules check
+          command: ./vendor/bin/phpcs --standard=phpcs.xml ./
   test-static-code-analysis:
     steps:
       - run:
@@ -130,6 +135,7 @@ jobs:
       - save-cache-yarn
       - wait-for-mysql
       - migration-seeding
+      - coding-rules-check
       - test-static-code-analysis
       - test-unittest
       - test-e2etest
