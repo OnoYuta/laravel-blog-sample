@@ -29,3 +29,7 @@ dusk:
 .PHONY: analyse
 analyse:
 	./vendor/bin/phpstan analyse
+
+.PHONY: format
+format:
+	./vendor/bin/phpcbf --standard=phpcs.xml ./
