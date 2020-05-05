@@ -118,6 +118,27 @@ commands:
       - run:
           name: Run Dusk
           command: php artisan dusk
+  build-image:
+    docker: docker:19.03.5
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run:
+          name: Install AWS CLI
+          command: |
+            apk add --no-cache --update py-pip
+            pip install awscli
+      - run:
+          name: Build image
+          command: |
+            $(aws ecr get-login --no-include-email --region ap-northeast-1)
+            docker build -t ${ECR_DOMAIN}:$CIRCLE_SHA1 -t ${ECR_DOMAIN}:latest .
+      - run:
+          name: Push docker image
+          command: |
+            docker push ${ECR_DOMAIN}:$CIRCLE_SHA1
+            docker push ${ECR_DOMAIN}:latest
 jobs:
   build:
     executor:
@@ -139,3 +160,11 @@ jobs:
       - test-static-code-analysis
       - test-unittest
       - test-e2etest
+  build_image:
+    executor:
+      name: default
+    requires:
+      - build
+    filters:
+      branches:
+        only: master
