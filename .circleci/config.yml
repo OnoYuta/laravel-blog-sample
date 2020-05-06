@@ -165,7 +165,8 @@ jobs:
       - image: docker:18.09.0
     steps:
       - checkout
-      - setup_remote_docker
+      - setup_remote_docker:
+          docker_layer_caching: true
       - install-aws-cli
       - build-image
       - push-docker-image
