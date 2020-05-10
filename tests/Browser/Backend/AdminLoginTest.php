@@ -3,9 +3,9 @@
 namespace Tests\Browser\Backend;
 
 use App\Admin;
-use App\Administrator;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
+use App\Models\Administrator;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\Browser\Pages\Backend\AdminLoginPage;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
