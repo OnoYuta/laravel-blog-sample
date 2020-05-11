@@ -11,6 +11,11 @@ Route::middleware('web')->group(function () {
     Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('admin.register');
     Route::post('register', 'Auth\RegisterController@register');
 
+    // Email Verification Routes...
+    Route::get('email/verify', 'Auth\VerificationController@show')->name('admin.verification.notice');
+    Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->name('admin.verification.verify');
+    Route::post('email/resend', 'Auth\VerificationController@resend')->name('admin.verification.resend');
+
     // Password Reset Routes...
     Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
     Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
@@ -19,6 +24,6 @@ Route::middleware('web')->group(function () {
 });
 
 // admin authenticated
-Route::middleware(['web', 'auth:admin'])->group(function () {
+Route::middleware(['web', 'auth:admin', 'verified'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('admin.home');
 });
