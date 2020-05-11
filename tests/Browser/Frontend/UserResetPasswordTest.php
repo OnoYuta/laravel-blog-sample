@@ -13,6 +13,7 @@ use Tests\Browser\Pages\Frontend\UserForgotPasswordPage;
 
 class UserResetPasswordTest extends DuskTestCase
 {
+    use DatabaseMigrations;
     use WithFaker;
 
     public function baseUrl()

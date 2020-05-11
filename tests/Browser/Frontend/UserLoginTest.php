@@ -11,6 +11,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class UserLoginTest extends DuskTestCase
 {
+    use DatabaseMigrations;
     use WithFaker;
 
     public function baseUrl()

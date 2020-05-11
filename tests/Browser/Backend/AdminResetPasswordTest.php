@@ -13,6 +13,7 @@ use Tests\Browser\Pages\Backend\AdminForgotPasswordPage;
 
 class AdminResetPasswordTest extends DuskTestCase
 {
+    use DatabaseMigrations;
     use WithFaker;
 
     public function baseUrl()
