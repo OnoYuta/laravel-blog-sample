@@ -2,7 +2,7 @@
 
 namespace Tests\Browser\Frontend;
 
-use App\User;
+use App\Models\User;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -11,6 +11,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 class UserLoginTest extends DuskTestCase
 {
+    use DatabaseMigrations;
     use WithFaker;
 
     public function baseUrl()

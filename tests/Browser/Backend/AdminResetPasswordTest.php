@@ -2,10 +2,9 @@
 
 namespace Tests\Browser\Frontend;
 
-use App\Admin;
-use App\Administrator;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
+use App\Models\Administrator;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\Browser\Pages\Backend\AdminLoginPage;
@@ -14,6 +13,7 @@ use Tests\Browser\Pages\Backend\AdminForgotPasswordPage;
 
 class AdminResetPasswordTest extends DuskTestCase
 {
+    use DatabaseMigrations;
     use WithFaker;
 
     public function baseUrl()

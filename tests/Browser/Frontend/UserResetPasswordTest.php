@@ -2,7 +2,7 @@
 
 namespace Tests\Browser\Frontend;
 
-use App\User;
+use App\Models\User;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
 use Illuminate\Support\Facades\Password;
@@ -13,6 +13,7 @@ use Tests\Browser\Pages\Frontend\UserForgotPasswordPage;
 
 class UserResetPasswordTest extends DuskTestCase
 {
+    use DatabaseMigrations;
     use WithFaker;
 
     public function baseUrl()
