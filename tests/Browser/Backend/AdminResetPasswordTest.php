@@ -56,7 +56,7 @@ class AdminResetPasswordTest extends DuskTestCase
         DB::table('password_resets')->insert([
             'email' => $user->email,
             'token' => Hash::make($token),
-            'created_at' => new Carbon,
+            'created_at' => new Carbon(),
         ]);
         $url = $this->baseUrl() . route('admin.password.reset', [
             'token' => $token,

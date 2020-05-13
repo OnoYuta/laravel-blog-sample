@@ -58,7 +58,7 @@ class UserResetPasswordTest extends DuskTestCase
         DB::table('password_resets')->insert([
             'email' => $user->email,
             'token' => Hash::make($token),
-            'created_at' => new Carbon,
+            'created_at' => new Carbon(),
         ]);
         $url = $this->baseUrl() . route('password.reset', [
             'token' => $token,
