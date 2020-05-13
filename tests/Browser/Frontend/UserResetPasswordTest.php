@@ -5,15 +5,21 @@ namespace Tests\Browser\Frontend;
 use App\Models\User;
 use Tests\DuskTestCase;
 use Laravel\Dusk\Browser;
+use Illuminate\Support\Str;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\Browser\Pages\Frontend\UserLoginPage;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Tests\Browser\Pages\Frontend\UserForgotPasswordPage;
 
 class UserResetPasswordTest extends DuskTestCase
 {
     use DatabaseMigrations;
+    use SendsPasswordResetEmails;
     use WithFaker;
 
     public function baseUrl()
@@ -22,7 +28,7 @@ class UserResetPasswordTest extends DuskTestCase
     }
 
     /**
-     * A basic browser test example.
+     * Test emailing user password reset link.
      *
      * @return void
      */
@@ -37,6 +43,35 @@ class UserResetPasswordTest extends DuskTestCase
                 ->type('@email', $user->email)
                 ->press('@submit')
                 ->assertSee(__(Password::RESET_LINK_SENT));
+        });
+    }
+
+    /**
+     * Test user password reset.
+     *
+     * @return void
+     */
+    public function testUserPasswordReset()
+    {
+        $user = factory(User::class)->create();
+        $token = hash_hmac('sha256', Str::random(40), 'Hashkey');
+        DB::table('password_resets')->insert([
+            'email' => $user->email,
+            'token' => Hash::make($token),
+            'created_at' => new Carbon,
+        ]);
+        $url = $this->baseUrl() . route('password.reset', [
+            'token' => $token,
+            'email' => $user->email,
+        ], false);
+
+        $this->browse(function (Browser $browser) use ($user, $url) {
+            $browser->visit($url)
+                ->type('#email', $user->email)
+                ->type('#password', 'password')
+                ->type('#password-confirm', 'password')
+                ->press('@submit')
+                ->assertSee($user->name);
         });
     }
 }
