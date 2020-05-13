@@ -21,6 +21,7 @@ Route::middleware('web')->group(function () {
     Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
     Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('admin.password.reset');
     Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+    Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('admin.password.update');
 });
 
 // admin authenticated
