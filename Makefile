@@ -33,3 +33,4 @@ analyse:
 .PHONY: format
 format:
 	./vendor/bin/phpcbf --standard=phpcs.xml ./
+	./vendor/bin/php-cs-fixer fix --config=.php_cs.dist -v --using-cache=no
