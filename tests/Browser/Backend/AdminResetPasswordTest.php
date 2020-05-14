@@ -2,18 +2,18 @@
 
 namespace Tests\Browser\Frontend;
 
-use Tests\DuskTestCase;
-use Laravel\Dusk\Browser;
-use Illuminate\Support\Str;
 use App\Models\Administrator;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
-use Illuminate\Foundation\Testing\WithFaker;
-use Tests\Browser\Pages\Backend\AdminLoginPage;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Support\Str;
+use Laravel\Dusk\Browser;
 use Tests\Browser\Pages\Backend\AdminForgotPasswordPage;
+use Tests\Browser\Pages\Backend\AdminLoginPage;
+use Tests\DuskTestCase;
 
 class AdminResetPasswordTest extends DuskTestCase
 {
@@ -54,8 +54,8 @@ class AdminResetPasswordTest extends DuskTestCase
         $user = factory(Administrator::class)->create();
         $token = hash_hmac('sha256', Str::random(40), 'Hashkey');
         DB::table('password_resets')->insert([
-            'email' => $user->email,
-            'token' => Hash::make($token),
+            'email'      => $user->email,
+            'token'      => Hash::make($token),
             'created_at' => new Carbon(),
         ]);
         $url = $this->baseUrl() . route('admin.password.reset', [

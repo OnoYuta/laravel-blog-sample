@@ -2,13 +2,12 @@
 
 namespace Tests\Browser\Backend;
 
-use App\Admin;
-use Tests\DuskTestCase;
-use Laravel\Dusk\Browser;
 use App\Models\Administrator;
-use Illuminate\Foundation\Testing\WithFaker;
-use Tests\Browser\Pages\Backend\AdminLoginPage;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\WithFaker;
+use Laravel\Dusk\Browser;
+use Tests\Browser\Pages\Backend\AdminLoginPage;
+use Tests\DuskTestCase;
 
 class AdminLoginTest extends DuskTestCase
 {

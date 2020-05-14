@@ -3,18 +3,18 @@
 namespace Tests\Browser\Frontend;
 
 use App\Models\User;
-use Tests\DuskTestCase;
-use Laravel\Dusk\Browser;
-use Illuminate\Support\Str;
+use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
-use Illuminate\Foundation\Testing\WithFaker;
-use Tests\Browser\Pages\Frontend\UserLoginPage;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Illuminate\Support\Str;
+use Laravel\Dusk\Browser;
 use Tests\Browser\Pages\Frontend\UserForgotPasswordPage;
+use Tests\Browser\Pages\Frontend\UserLoginPage;
+use Tests\DuskTestCase;
 
 class UserResetPasswordTest extends DuskTestCase
 {
@@ -56,8 +56,8 @@ class UserResetPasswordTest extends DuskTestCase
         $user = factory(User::class)->create();
         $token = hash_hmac('sha256', Str::random(40), 'Hashkey');
         DB::table('password_resets')->insert([
-            'email' => $user->email,
-            'token' => Hash::make($token),
+            'email'      => $user->email,
+            'token'      => Hash::make($token),
             'created_at' => new Carbon(),
         ]);
         $url = $this->baseUrl() . route('password.reset', [

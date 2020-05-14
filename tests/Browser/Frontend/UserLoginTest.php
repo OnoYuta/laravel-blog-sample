@@ -3,11 +3,11 @@
 namespace Tests\Browser\Frontend;
 
 use App\Models\User;
-use Tests\DuskTestCase;
-use Laravel\Dusk\Browser;
-use Illuminate\Foundation\Testing\WithFaker;
-use Tests\Browser\Pages\Frontend\UserLoginPage;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\WithFaker;
+use Laravel\Dusk\Browser;
+use Tests\Browser\Pages\Frontend\UserLoginPage;
+use Tests\DuskTestCase;
 
 class UserLoginTest extends DuskTestCase
 {
