@@ -1,0 +1,63 @@
+':white_check_mark: test':
+  - __tests__/**/*
+  - tests/**/*
+':goat: application':
+  - app/**/*
+':package: dependencies':
+  - composer.json
+  - composer.lock
+  - package.json
+  - yarn.lock
+':gear: config':
+  - config/**/*
+  - ./*.yml
+  - ./*.json
+  - ./*.js
+  - ./*.xml
+  - ./*.neon
+  - ./*rc
+':card_file_box: migration':
+  - database/migrations/*.php
+':seedling: seeder':
+  - database/seeds/**/*.php
+':motorway: route':
+  - routes/**/*.php
+':elephant: php':
+  - app/**/*.php
+  - composer.json
+  - composer.lock
+  - psalm.xml
+  - phpstan.neon
+  - .php_cs.dist
+  - depfile.yml
+':rhinoceros: javascript':
+  - resources/js/**/*.js
+  - resources/js/**/*.jsx
+  - package.json
+  - yarn.lock
+  - .eslintrc.json
+  - jest-puppeteer.config.js
+  - jest.config.json
+  - .babelrc
+':package: webpack':
+  - webpack.*.js
+':whale: docker':
+  - docker-compose.yml
+  - Dockerfile*
+'🇻 vue':
+  - resources/js/**/*.vue
+':koala: template':
+  - resources/views/**/*.blade.php
+':fish: css':
+  - resources/sass/**/*.css
+  - resources/sass/**/*.scss
+  - .stylelintrc.json
+':framed_picture: images':
+  - resources/images/**/*
+':globe_with_meridians: i18n':
+  - resources/lang/**/*
+':octocat: github':
+  - .github/**/*
+':memo: documentation':
+  - ./README.md
+  - ./docs/**/*
