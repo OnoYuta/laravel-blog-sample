@@ -49933,14 +49933,38 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/sass/backend/app.scss":
+/*!*****************************************!*\
+  !*** ./resources/sass/backend/app.scss ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/frontend/app.scss":
+/*!******************************************!*\
+  !*** ./resources/sass/frontend/app.scss ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ 0:
-/*!*************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
-  \*************************************************************/
+/*!**********************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/backend/app.scss ./resources/sass/frontend/app.scss ./resources/sass/app.scss ***!
+  \**********************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! /Users/ono/Project/laravel-blog-sample/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /Users/ono/Project/laravel-blog-sample/resources/sass/backend/app.scss */"./resources/sass/backend/app.scss");
+__webpack_require__(/*! /Users/ono/Project/laravel-blog-sample/resources/sass/frontend/app.scss */"./resources/sass/frontend/app.scss");
 module.exports = __webpack_require__(/*! /Users/ono/Project/laravel-blog-sample/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
