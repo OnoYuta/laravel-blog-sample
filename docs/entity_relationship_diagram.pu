@@ -1,0 +1,65 @@
+@startuml entity_relationship_diagram
+
+entity users {
+    id
+    name
+    username
+    password
+    email
+    email_verified_at
+    created_at
+    updated_at
+}
+
+entity posts {
+    id
+    user_id
+    title
+    contents
+    status
+    created_at
+    updated_at
+    published_at
+}
+
+users -{ posts
+
+entity post_tag {
+    id
+    post_id
+    tag_id
+    created_at
+    updated_at
+}
+
+posts -{ post_tag
+
+entity tags {
+    id
+    name
+    created_at
+    updated_at
+}
+
+tags -left{ post_tag
+
+entity category_post {
+    id
+    post_id
+    category_id
+    created_at
+    updated_at
+}
+
+posts -down-{ category_post
+
+entity categories {
+    id
+    name
+    created_at
+    updated_at
+}
+
+categories -left{ category_post
+
+@enduml
