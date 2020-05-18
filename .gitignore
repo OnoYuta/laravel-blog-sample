@@ -5,6 +5,7 @@
 /storage/*.key
 /storage/mysql
 /vendor
+/out
 .env
 .env.testing
 .env.backup
