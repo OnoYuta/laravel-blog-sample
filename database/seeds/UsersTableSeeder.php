@@ -16,14 +16,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        if (config('database.default') == 'mysql') {
-            DB::table($this->table)->truncate();
-        } elseif (config('database.default') == 'sqlite') {
-            DB::statement('DELETE FROM ' . $this->table);
-        } else {
-            //For PostgreSQL or anything else
-            DB::statement('TRUNCATE TABLE ' . $this->table . ' CASCADE');
-        }
+        DB::table($this->table)->truncate();
 
         factory(User::class)->create([
             'username'    => 'user',
