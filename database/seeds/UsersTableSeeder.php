@@ -16,9 +16,9 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        if (env('DB_CONNECTION') == 'mysql') {
+        if (config('database.default') == 'mysql') {
             DB::table($this->table)->truncate();
-        } elseif (env('DB_CONNECTION') == 'sqlite') {
+        } elseif (config('database.default') == 'sqlite') {
             DB::statement('DELETE FROM ' . $this->table);
         } else {
             //For PostgreSQL or anything else
