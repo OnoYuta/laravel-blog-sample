@@ -2,6 +2,10 @@
 up:
 	docker-compose up -d
 
+.PHONY: up-build
+up-build:
+	docker-compose up -d --build
+
 .PHONY: down
 down:
 	docker-compose down
@@ -15,7 +19,7 @@ attach: ## Attach to container : ## make attach app
 	docker-compose exec $(RUN_ARGS) sh -c "[ -f /bin/bash ] && /bin/bash || /bin/sh"
 
 .PHONY: db-fresh
-db-fresh: ## make attach app
+db-fresh:
 	docker-compose exec app php artisan migrate:fresh --seed
 
 .PHONY: test
