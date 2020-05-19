@@ -6,6 +6,7 @@
 /storage/mysql
 /vendor
 /out
+.DS_Store
 .env
 .env.testing
 .env.backup
