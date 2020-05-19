@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         //シーダーを実行する前に、この接続の外部キーチェックを無効にする
-        if (env('DB_CONNECTION') == 'mysql') {
+        if (config('database.default') == 'mysql') {
             DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         }
 
@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AdministratorsTableSeeder::class);
 
         // 外部キーチェックを明示的に有効に戻す（これを省略しても接続が終了すれば元に戻る）
-        if (env('DB_CONNECTION') == 'mysql') {
+        if (config('database.default') == 'mysql') {
             DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         }
     }
