@@ -10,6 +10,10 @@ up-build:
 down:
 	docker-compose down
 
+.PHONY: down-all
+down-all:
+	docker-compose down --volumes --rmi all
+
 .PHONY: attach
 ifeq (attach,$(firstword $(MAKECMDGOALS)))
   RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
