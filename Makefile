@@ -34,6 +34,10 @@ test:
 dusk:
 	php artisan dusk --env=testing
 
+.PHONY: ci
+ci:
+	circleci local execute
+
 .PHONY: analyse
 analyse:
 	./vendor/bin/phpstan analyse
