@@ -112,19 +112,19 @@ return [
 
         'controller' => App\Admin\Controllers\AuthController::class,
 
-        'guard' => 'admin',
+        'guard' => 'laravel-admin',
 
         'guards' => [
-            'admin' => [
+            'laravel-admin' => [
                 'driver'   => 'session',
-                'provider' => 'admin',
+                'provider' => 'laravel-admin',
             ],
         ],
 
         'providers' => [
-            'admin' => [
+            'laravel-admin' => [
                 'driver' => 'eloquent',
-                'model'  => App\Models\Administrator::class,
+                'model'  => App\Models\LaravelAdmin\Administrator::class,
             ],
         ],
 

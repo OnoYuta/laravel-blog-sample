@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\LaravelAdmin;
 
 use Encore\Admin\Auth\Database\Administrator as Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
