@@ -177,8 +177,8 @@ return [
         'connection' => '',
 
         // User tables and model.
-        'users_table' => 'admin_users',
-        'users_model' => Encore\Admin\Auth\Database\Administrator::class,
+        'users_table' => 'administrators',
+        'users_model' => App\Models\LaravelAdmin\Administrator::class,
 
         // Role table and model.
         'roles_table' => 'admin_roles',
