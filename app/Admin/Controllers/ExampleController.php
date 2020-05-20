@@ -23,6 +23,7 @@ class ExampleController extends AdminController
      */
     protected function grid()
     {
+        // @phpstan-ignore-next-line
         $grid = new Grid(new ExampleModel());
 
         $grid->column('id', __('ID'))->sortable();
@@ -40,6 +41,7 @@ class ExampleController extends AdminController
      */
     protected function detail($id)
     {
+        // @phpstan-ignore-next-line
         $show = new Show(ExampleModel::findOrFail($id));
 
         $show->field('id', __('ID'));
@@ -56,6 +58,7 @@ class ExampleController extends AdminController
      */
     protected function form()
     {
+        // @phpstan-ignore-next-line
         $form = new Form(new ExampleModel());
 
         $form->display('id', __('ID'));
