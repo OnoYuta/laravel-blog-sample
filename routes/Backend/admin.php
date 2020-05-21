@@ -30,7 +30,9 @@ Route::middleware('web')->group(function () {
 
 // admin authenticated
 Route::middleware(['web', 'auth:admin', 'verified'])->group(function () {
-    Route::get('/home', 'HomeController@index')->name('admin.home');
+
+    // Dashboard
+    Route::get('/', 'HomeController@index')->name('admin.home');
 
     Route::get('auth/setting', 'Auth\AuthController@getSetting')->name('admin.setting');
     Route::put('auth/setting', 'Auth\AuthController@putSetting');
