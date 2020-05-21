@@ -98,7 +98,7 @@ class LoginController extends Controller
      */
     protected function attemptLogin(Request $request)
     {
-        Auth::guard('admin')->attempt(
+        Auth::guard('laravel-admin')->attempt(
             $this->credentials($request),
             $request->filled('remember')
         );
