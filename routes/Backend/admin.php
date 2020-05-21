@@ -5,7 +5,11 @@ Route::middleware('web')->group(function () {
     // Authentication Routes...
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('admin.login');
     Route::post('login', 'Auth\LoginController@login');
-    Route::post('logout', 'Auth\LoginController@logout')->name('admin.logout');
+    Route::get('logout', 'Auth\LoginController@logout')->name('admin.logout');
+
+    // Redirect route for Laravel-admin...
+    Route::redirect('auth/login', '/login', 301);
+    Route::redirect('auth/logout', '/logout', 301);
 
     // Registration Routes...
     Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('admin.register');
