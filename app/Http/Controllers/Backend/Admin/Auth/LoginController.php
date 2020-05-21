@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -59,6 +59,22 @@ class LoginController extends Controller
     }
 
     /**
+     * Laravel-admin併用のためログアウト機能をカスタマイズ
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+        Auth::guard('laravel-admin')->logout();
+
+        $request->session()->invalidate();
+
+        return redirect()->route('admin.login');
+    }
+
+    /**
      * Send the response after the user was authenticated.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -72,6 +88,25 @@ class LoginController extends Controller
 
         return $this->authenticated($request, $this->guard()->user())
             ?: redirect()->intended($this->redirectPath());
+    }
+
+    /**
+     * Laravel-admin併用のためログイン機能をカスタマイズ
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return bool
+     */
+    protected function attemptLogin(Request $request)
+    {
+        Auth::guard('admin')->attempt(
+            $this->credentials($request),
+            $request->filled('remember')
+        );
+
+        return $this->guard()->attempt(
+            $this->credentials($request),
+            $request->filled('remember')
+        );
     }
 
     /**
