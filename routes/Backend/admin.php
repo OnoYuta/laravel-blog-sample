@@ -34,4 +34,13 @@ Route::middleware(['web', 'auth:admin', 'verified'])->group(function () {
 
     Route::get('auth/setting', 'Auth\AuthController@getSetting')->name('admin.setting');
     Route::put('auth/setting', 'Auth\AuthController@putSetting');
+
+    Route::resource('auth/users', '\Encore\Admin\Controllers\UserController')->names('admin.auth.users');
+    Route::resource('auth/roles', '\Encore\Admin\Controllers\RoleController')->names('admin.auth.roles');
+    Route::resource('auth/permissions', '\Encore\Admin\Controllers\PermissionController')->names('admin.auth.permissions');
+    Route::resource('auth/menu', '\Encore\Admin\Controllers\MenuController', ['except' => ['create']])->names('admin.auth.menu');
+    Route::resource('auth/logs', '\Encore\Admin\Controllers\LogController', ['only' => ['index', 'destroy']])->names('admin.auth.logs');
+
+    Route::post('_handle_form_', '\Encore\Admin\Controllers\HandleController@handleForm')->name('admin.handle-form');
+    Route::post('_handle_action_', '\Encore\Admin\Controllers\HandleController@handleAction')->name('admin.handle-action');
 });
