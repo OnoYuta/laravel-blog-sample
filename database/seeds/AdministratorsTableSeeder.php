@@ -21,7 +21,7 @@ class AdministratorsTableSeeder extends Seeder
         factory(Administrator::class)->create([
             'username'    => 'admin',
             'email'       => 'admin@example.com',
-            'password'    => Hash::make('password'),
+            'password'    => Hash::make('admin'),
         ]);
 
         factory(Administrator::class, 10)->create();
