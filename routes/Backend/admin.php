@@ -34,6 +34,7 @@ Route::middleware(['web', 'auth:admin', 'auth:laravel-admin', 'verified'])->grou
     // Dashboard
     Route::get('/', 'HomeController@index')->name('admin.home');
 
+    // Default Routes...
     Route::get('auth/setting', 'Auth\AuthController@getSetting')->name('admin.setting');
     Route::put('auth/setting', 'Auth\AuthController@putSetting');
 
@@ -45,4 +46,7 @@ Route::middleware(['web', 'auth:admin', 'auth:laravel-admin', 'verified'])->grou
 
     Route::post('_handle_form_', '\Encore\Admin\Controllers\HandleController@handleForm')->name('admin.handle-form');
     Route::post('_handle_action_', '\Encore\Admin\Controllers\HandleController@handleAction')->name('admin.handle-action');
+
+    // Resource Routes...
+    Route::resource('posts', 'PostController')->names('admin.posts');
 });
