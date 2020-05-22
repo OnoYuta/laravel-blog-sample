@@ -26,6 +26,10 @@ attach: ## Attach to container : ## make attach app
 db-fresh: ## Database migrate and seed
 	docker-compose exec app php artisan migrate:fresh --seed
 
+.PHONY: tinker
+tinker: ## Start tinker which is laravel's REPL
+	docker-compose exec app php artisan tinker
+
 .PHONY: test
 test: ## Execute unit-test with phpunit
 	./vendor/bin/phpunit
