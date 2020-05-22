@@ -2,6 +2,10 @@
 
 // user unauthenticated
 Route::middleware('web')->group(function () {
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
     Auth::routes(['verify' => true]);
 });
 

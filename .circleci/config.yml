@@ -118,6 +118,9 @@ commands:
       - run:
           name: Run Dusk
           command: php artisan dusk
+      - store_artifacts:
+          path: ./tests/Browser/screenshots
+          destination: screenshots
 jobs:
   build:
     executor:

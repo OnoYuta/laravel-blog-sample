@@ -38,7 +38,7 @@ class AdminLoginTest extends DuskTestCase
                 ->type('@username', $user->username)
                 ->type('@password', $password)
                 ->press('@submit')
-                ->assertRouteIs('home', []);
+                ->assertRouteIs('admin.home', []);
         });
     }
 
@@ -53,9 +53,10 @@ class AdminLoginTest extends DuskTestCase
 
         $this->browse(function (Browser $browser) use ($user) {
             $browser->loginAs($user)
-                ->visit(route('home', [], false))
-                ->click('#navbarDropdown')
-                ->click('@logoutLink')
+                ->visit(route('admin.home', [], false))
+                ->click('.dropdown.user.user-menu')
+                ->clickLink('ログアウト')
+                ->waitForText(__('Login'))
                 ->assertSee(__('Login'));
         });
     }
