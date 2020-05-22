@@ -27,4 +27,14 @@ class Post extends Model
     protected $casts = [
         'published_at' => 'datetime',
     ];
+
+    /**
+     * Define an inverse one-to-one or many relationship.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function administrator()
+    {
+        return $this->belongsTo(Administrator::class);
+    }
 }
