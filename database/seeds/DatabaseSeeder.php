@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(UsersTableSeeder::class);
         $this->call(AdministratorsTableSeeder::class);
+        $this->call(LaravelAdminSeeder::class);
 
         // 外部キーチェックを明示的に有効に戻す（これを省略しても接続が終了すれば元に戻る）
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
