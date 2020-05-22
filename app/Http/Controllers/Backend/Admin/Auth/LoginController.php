@@ -59,7 +59,7 @@ class LoginController extends Controller
     }
 
     /**
-     * Laravel-admin併用のためログアウト機能をカスタマイズ
+     * Laravel-admin併用のため別のguardでもログアウトする
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -91,7 +91,7 @@ class LoginController extends Controller
     }
 
     /**
-     * Laravel-admin併用のためログイン機能をカスタマイズ
+     * Laravel-admin併用のため別のguardでもログインする
      *
      * @param  \Illuminate\Http\Request  $request
      * @return bool
