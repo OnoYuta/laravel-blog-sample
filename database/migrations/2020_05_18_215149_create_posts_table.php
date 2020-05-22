@@ -16,10 +16,10 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')
+            $table->unsignedBigInteger('administrator_id');
+            $table->foreign('administrator_id')
                 ->references('id')
-                ->on('users');
+                ->on('administrators');
             $table->string('title');
             $table->string('contents');
             $table->string('status');

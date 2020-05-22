@@ -1,6 +1,6 @@
 @startuml entity_relationship_diagram
 
-entity users {
+entity administrators {
     id
     name
     username
@@ -13,7 +13,7 @@ entity users {
 
 entity posts {
     id
-    user_id
+    administrator_id
     title
     contents
     status
@@ -22,7 +22,7 @@ entity posts {
     published_at
 }
 
-users -{ posts
+administrators -{ posts
 
 entity post_tag {
     id
