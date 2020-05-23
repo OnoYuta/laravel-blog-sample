@@ -13,5 +13,10 @@ return [
     'Menu' => 'メニュー',
     'Log' => 'ログ',
     'Posts' => '投稿',
+    'Administrator id' => '管理者ID',
+    'Title' => 'タイトル',
+    'Contents' => 'コンテンツ',
+    'Status' => 'ステータス',
+    'Published at' => '公開日',
 
 ];
