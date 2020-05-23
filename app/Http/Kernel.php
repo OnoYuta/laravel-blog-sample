@@ -41,6 +41,15 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             'bindings',
         ],
+
+        'laravel-admin' => [
+            'admin.auth',
+            'admin.pjax',
+            'admin.log',
+            'admin.bootstrap',
+            'admin.permission',
+            // 'admin.session',
+        ],
     ];
 
     /**
@@ -60,6 +69,13 @@ class Kernel extends HttpKernel
         'signed'        => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle'      => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified'      => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        // Laravel-admin middleware
+        'admin.auth'       => \Encore\Admin\Middleware\Authenticate::class,
+        'admin.pjax'       => \Encore\Admin\Middleware\Pjax::class,
+        'admin.log'        => \Encore\Admin\Middleware\LogOperation::class,
+        'admin.permission' => \Encore\Admin\Middleware\Permission::class,
+        'admin.bootstrap'  => \Encore\Admin\Middleware\Bootstrap::class,
+        'admin.session'    => \Encore\Admin\Middleware\Session::class,
     ];
 
     /**

@@ -29,7 +29,7 @@ Route::middleware('web')->group(function () {
 });
 
 // admin authenticated
-Route::middleware(['web', 'auth:admin', 'auth:laravel-admin', 'admin', 'verified'])->group(function () {
+Route::middleware(['web', 'auth:admin', 'laravel-admin', 'verified'])->group(function () {
 
     // Dashboard
     Route::get('/', 'HomeController@index')->name('admin.home');
