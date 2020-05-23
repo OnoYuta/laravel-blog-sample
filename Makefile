@@ -51,6 +51,14 @@ format: ## Auto-format source code
 	./vendor/bin/phpcbf --standard=phpcs.xml ./
 	./vendor/bin/php-cs-fixer fix --config=.php_cs.dist -v --using-cache=no
 
+.PHONY: commit
+commit: ## Commit after fixing source code
+	./vendor/bin/phpcbf --standard=phpcs.xml ./
+	./vendor/bin/php-cs-fixer fix --config=.php_cs.dist -v --using-cache=no
+	./vendor/bin/phpstan analyse
+	git add .
+	git commit
+
 .PHONY: help
 help: ## Display the list of make commands
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
