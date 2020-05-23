@@ -38,7 +38,7 @@ Route::middleware(['web', 'auth:admin', 'laravel-admin', 'verified'])->group(fun
     Route::get('auth/setting', 'Auth\AuthController@getSetting')->name('admin.setting');
     Route::put('auth/setting', 'Auth\AuthController@putSetting');
 
-    Route::resource('auth/users', '\Encore\Admin\Controllers\UserController')->names('admin.auth.users');
+    Route::resource('auth/administrators', '\Encore\Admin\Controllers\UserController')->names('admin.auth.administrators');
     Route::resource('auth/roles', '\Encore\Admin\Controllers\RoleController')->names('admin.auth.roles');
     Route::resource('auth/permissions', '\Encore\Admin\Controllers\PermissionController')->names('admin.auth.permissions');
     Route::resource('auth/menu', '\Encore\Admin\Controllers\MenuController', ['except' => ['create']])->names('admin.auth.menu');
