@@ -114,6 +114,13 @@ class LaravelAdminSeeder extends Seeder
                 'icon'      => 'fa-history',
                 'uri'       => 'auth/logs',
             ],
+            [
+                'parent_id' => 0,
+                'order'     => 8,
+                'title'     => 'Posts',
+                'icon'      => 'fa-edit',
+                'uri'       => 'posts',
+            ],
         ]);
 
         // add role to menu.
