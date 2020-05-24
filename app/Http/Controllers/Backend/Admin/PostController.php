@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Backend\Admin;
 
 use App\Models\Post;
+use App\Repositories\Backend\Contract\PostRepositoryContract;
+use Carbon\Carbon;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
 class PostController extends AdminController
@@ -18,6 +21,17 @@ class PostController extends AdminController
      * @var string
      */
     protected $title = 'App\Models\Post';
+    private $post;
+
+    /**
+     * Undocumented function
+     *
+     * @param PostRepositoryContract $post
+     */
+    public function __construct(PostRepositoryContract $post)
+    {
+        $this->post = $post;
+    }
 
     /**
      * Get content title.
@@ -104,6 +118,44 @@ class PostController extends AdminController
             ], [
                 'after_or_equal' => '公開日には、本日以降の日付を指定してください。'
             ]);
+
+        // 編集時は新たなバリデーションルールを作成する
+        if (! Str::contains(request()->url(), 'create') && $postId = (int) request()->post) {
+            return $this->addUpdateRules($form, $postId);
+        }
+
+        return $form;
+    }
+
+    /**
+     * Add updateRules for Form
+     *
+     * @param Form $form
+     * @param int $postId
+     * @return Form
+     */
+    private function addUpdateRules(Form $form, int $postId): Form
+    {
+        // 現在のモデルを取得する
+        $post = $this->post->find($postId);
+
+        // 設定済みの公開日を取得する
+        $publishedAt = $post->getAttribute('published_at');
+        if ($publishedAt instanceof Carbon && $publishedAt->lessThan(Carbon::now())) {
+            // 設定済みの公開日をまだ迎えていない場合は、設定済みの公開日以降の日付を選択できる
+            $startDatetime = $publishedAt;
+        } else {
+            // 設定済みの公開日をもう迎えている場合は、本日以降の日付を選択できる
+            $startDatetime = Carbon::now();
+        }
+
+        $form->builder()->field('published_at')->updateRules([
+            'bail',
+            'required',
+            'after_or_equal:' . $startDatetime->toDatetimeString(),
+        ], [
+            'after_or_equal' => '公開日には、' . $startDatetime->format('Y年m月d日 H時i分s秒') . '以降の日付を指定してください。'
+        ]);
 
         return $form;
     }

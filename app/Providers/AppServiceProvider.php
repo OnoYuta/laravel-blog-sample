@@ -13,7 +13,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        /*
+         * Backend binding
+         */
+        $this->app->bind(
+            \App\Repositories\Backend\Contract\PostRepositoryContract::class,
+            \App\Repositories\Backend\Repository\EloquentPostRepository::class
+        );
     }
 
     /**

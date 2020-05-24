@@ -44,7 +44,7 @@ ci: ## Execute CircleCI in local environment
 
 .PHONY: analyse
 analyse: ## Static analysis with phpstan
-	./vendor/bin/phpstan analyse
+	./vendor/bin/phpstan analyse --memory-limit=4000M
 
 .PHONY: format
 format: ## Auto-format source code
