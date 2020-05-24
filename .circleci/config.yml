@@ -96,7 +96,7 @@ commands:
     steps:
       - run:
           name: Static code analysis
-          command: ./vendor/bin/phpstan analyse
+          command: ./vendor/bin/phpstan analyse --memory-limit 4000M
   test-unittest:
     steps:
       - run:
