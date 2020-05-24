@@ -12,7 +12,7 @@ return [
     'Permission' => '権限',
     'Menu' => 'メニュー',
     'Log' => 'ログ',
-    'Posts' => '投稿',
+    'Posts' => '記事',
     'Administrator id' => '管理者ID',
     'Title' => 'タイトル',
     'Contents' => 'コンテンツ',
