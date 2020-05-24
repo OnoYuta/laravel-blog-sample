@@ -8,6 +8,9 @@ use Carbon\Carbon;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
+use Encore\Admin\Layout\Column;
+use Encore\Admin\Layout\Content;
+use Encore\Admin\Layout\Row;
 use Encore\Admin\Show;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -21,16 +24,53 @@ class PostController extends AdminController
      * @var string
      */
     protected $title = 'App\Models\Post';
+
+    /**
+     * @var PostRepositoryContract
+     */
     private $post;
 
     /**
-     * Undocumented function
-     *
      * @param PostRepositoryContract $post
      */
     public function __construct(PostRepositoryContract $post)
     {
         $this->post = $post;
+    }
+
+    /**
+     * Show interface.
+     *
+     * @param mixed   $id
+     * @param Content $content
+     *
+     * @return Content
+     */
+    public function show($id, Content $content)
+    {
+        return $content
+            ->title($this->title())
+            ->description($this->description['show'] ?? trans('admin.show'))
+            ->body($this->detail($id))
+            ->row(function (Row $row) use ($id) {
+                $row->column(12, function (Column $column) use ($id) {
+                    $column->append($this->preview($id));
+                });
+            });
+    }
+
+    /**
+     * Make a show builder for contents preview.
+     *
+     * @param mixed $id
+     * @return Show
+     */
+    public function preview($id)
+    {
+        $html = $this->post->find($id)->html;
+
+        return view('backend.post.preview')
+            ->with(['html' => $html]);
     }
 
     /**
@@ -53,11 +93,19 @@ class PostController extends AdminController
         $grid = new Grid(new Post());
 
         $grid->column('id', __('fields.Id'));
-        $grid->column('administrator_id', __('fields.Administrator id'));
+        // @phpstan-ignore-next-line
+        $grid->administrator(__('fields.Author'))
+            ->display(function ($administrator) {
+                return $administrator['name'];
+            });
         $grid->column('title', __('fields.Title'));
-        $grid->column('contents', __('fields.Contents'));
-        $grid->column('status', __('fields.Status'));
-        $grid->column('published_at', __('fields.Published at'));
+        $grid->column('status', __('fields.Status'))
+            ->using((array) trans('fields'));
+        $grid->column('published_at', __('fields.Published at'))
+            ->display(function () {
+                // @phpstan-ignore-next-line
+                return $this->getAttribute('published_at')->format('Y年m月d日');
+            });
 
         return $grid;
     }
@@ -73,13 +121,31 @@ class PostController extends AdminController
         $show = new Show(Post::findOrFail($id));
 
         $show->field('id', __('fields.Id'));
-        $show->field('administrator_id', __('fields.Administrator id'));
+        // @phpstan-ignore-next-line
+        $show->administrator(__('fields.Author'))
+            ->as(function ($administrator) {
+                return $administrator['name'];
+            });
         $show->field('title', __('fields.Title'));
         $show->field('contents', __('fields.Contents'));
-        $show->field('status', __('fields.Status'));
-        $show->field('published_at', __('fields.Published at'));
-        $show->field('created_at', __('fields.Created at'));
-        $show->field('updated_at', __('fields.Updated at'));
+        $show->field('status', __('fields.Status'))
+            ->using((array) trans('fields'));
+        $show->field('published_at', __('fields.Published at'))
+            ->as(function () {
+                // @phpstan-ignore-next-line
+                return $this->getAttribute('published_at')->format('Y年m月d日 H時i分s秒');
+            });
+        $show->field('created_at', __('fields.Created at'))
+            ->as(function () {
+                // @phpstan-ignore-next-line
+                return $this->getAttribute('created_at')->format('Y年m月d日 H時i分s秒');
+            });
+        $show->field('updated_at', __('fields.Updated at'))
+            ->as(function () {
+                // @phpstan-ignore-next-line
+                return $this->getAttribute('updated_at')->format('Y年m月d日 H時i分s秒');
+            });
+        $show->divider();
 
         return $show;
     }
@@ -97,7 +163,7 @@ class PostController extends AdminController
             ->value(Auth::guard('admin')->user()->getAttribute('id'));
         $form->text('title', __('fields.Title'))
             ->required();
-        $form->text('contents', __('fields.Contents'))
+        $form->textarea('contents', __('fields.Contents'))
             ->required();
         $form->select('status', __('fields.Status'))
             ->options(collect(config('fields.post_status'))->mapWithKeys(function ($value) {

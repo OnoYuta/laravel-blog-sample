@@ -55,7 +55,7 @@ format: ## Auto-format source code
 commit: ## Commit after fixing source code
 	./vendor/bin/phpcbf --standard=phpcs.xml ./
 	./vendor/bin/php-cs-fixer fix --config=.php_cs.dist -v --using-cache=no
-	./vendor/bin/phpstan analyse
+	./vendor/bin/phpstan analyse --memory-limit=4000M
 	git add .
 	git commit
 
