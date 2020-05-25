@@ -2,5 +2,6 @@
     "/js/app.js": "/js/app.js",
     "/backend/css/app.css": "/backend/css/app.css",
     "/frontend/css/app.css": "/frontend/css/app.css",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/css/welcome.css": "/css/welcome.css"
 }
