@@ -67,7 +67,7 @@ class PostController extends AdminController
      */
     public function preview($id)
     {
-        $html = $this->post->find($id)->html;
+        $html = $this->post->find($id)->contents;
 
         return view('backend.post.preview')
             ->with(['html' => $html]);
