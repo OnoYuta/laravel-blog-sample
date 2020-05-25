@@ -94,11 +94,14 @@ class PostController extends AdminController
 
         $grid->column('id', __('fields.Id'));
         // @phpstan-ignore-next-line
-        $grid->administrator(__('fields.Author'))
-            ->display(function ($administrator) {
-                return $administrator['name'];
-            });
-        $grid->column('title', __('fields.Title'));
+        $grid->column('title', __('fields.Title'))->limit(10);
+        // @phpstan-ignore-next-line
+        $grid->column('contents', __('fields.Contents'))
+            ->display(function () {
+                // @phpstan-ignore-next-line
+                return htmlspecialchars($this->getAttribute('contents'), ENT_QUOTES, 'UTF-8', false);
+            })
+            ->limit(20);
         $grid->column('status', __('fields.Status'))
             ->using((array) trans('fields'));
         $grid->column('published_at', __('fields.Published at'))
@@ -106,6 +109,20 @@ class PostController extends AdminController
                 // @phpstan-ignore-next-line
                 return $this->getAttribute('published_at')->format('Y年m月d日');
             });
+        // @phpstan-ignore-next-line
+        $grid->administrator(__('fields.Author'))
+            ->display(function ($administrator) {
+                return $administrator['name'];
+            });
+
+        // add onclick action
+        $grid->rows(function (Grid\Row $row) {
+            $row->setAttributes([
+                'style'   => 'cursor: pointer;',
+                // @phpstan-ignore-next-line
+                'onclick' => "location.href='" . route('admin.posts.show', ['post' => $row->id]) . "'"
+            ]);
+        });
 
         return $grid;
     }
