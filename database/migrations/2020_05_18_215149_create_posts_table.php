@@ -21,7 +21,7 @@ class CreatePostsTable extends Migration
                 ->references('id')
                 ->on('administrators');
             $table->string('title');
-            $table->string('contents');
+            $table->longText('contents');
             $table->string('status');
             $table->dateTime('published_at')
                 ->default(Carbon::now());
