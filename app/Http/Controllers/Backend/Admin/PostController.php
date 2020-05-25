@@ -163,8 +163,10 @@ class PostController extends AdminController
             ->value(Auth::guard('admin')->user()->getAttribute('id'));
         $form->text('title', __('fields.Title'))
             ->required();
-        $form->textarea('contents', __('fields.Contents'))
-            ->required();
+        // @phpstan-ignore-next-line
+        $form->ckeditor('contents', __('fields.Contents'))
+            ->required()
+            ->help(__('helps.show_html'));
         $form->select('status', __('fields.Status'))
             ->options(collect(config('fields.post_status'))->mapWithKeys(function ($value) {
                 return [$value => trans('fields.' . $value)];
