@@ -18,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('frontend/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/css/welcome.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -27,9 +27,7 @@
         @include('frontend.includes.navbar')
 
         <!-- content -->
-        <main class="py-4">
-            @yield('content')
-        </main>
+        @yield('content')
 
         <!-- footer -->
         @include('frontend.includes.footer')
