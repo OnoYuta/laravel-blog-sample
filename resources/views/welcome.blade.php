@@ -54,25 +54,19 @@
                 </div>
             </div>
         </nav>
-        <div class="flex-center position-ref full-height">
 
-            <div class="content">
-                <div class="title m-b-md">
-                    {{ config('app.name', 'Laravel') }}
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+        <!-- header -->
+        <header class="text-center">
+            <div class="container vh-100 d-flex justify-content-center align-items-center flex-column">
+                <p class="site-title-sub display-5">Sample blog project featuring many basic and general topics.</p>
+                <h1 class="d-md-4 display-2 site-title">{{ config('app.name', 'Laravel') }}</h1>
+                <p class="site-description display-5">Check out come of my works.</p>
+                <div class="row w-100 d-flex justify-content-center">
+                    <a href="{{ url('/') }}" class="btn btn-primary col-4 col-sm-3 col-md-2">Primary</a>
+                    <a href="{{ url('/') }}" class="btn btn-secondary offset-1 col-4 col-sm-3 col-md-2">Secondary</a>
                 </div>
             </div>
-        </div>
+        </header>
     </div>
 </body>
 
