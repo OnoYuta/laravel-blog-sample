@@ -6,23 +6,16 @@
         </button>
         <div class="collapse navbar-collapse" id="mainNav">
             <ul class="navbar-nav ml-auto">
-                @if (Route::has('login'))
-                @auth
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url()->to('home') }}">{{ __('Home') }}</a>
-                </li>
-                @else
+                @guest
                 <li class="nav-item ml-auto">
-                    <a class="nav-link" href="{{ url()->to('login') }}">{{ __('Login') }}</a>
+                    <a class="nav-link" href="{{ route('admin.login') }}">{{ __('Login') }}</a>
                 </li>
                 @if (Route::has('register'))
                 <li class="nav-item ml-auto">
-                    <a class="nav-link" href="{{ url()->to('register') }}">{{ __('Register') }}</a>
+                    <a class="nav-link" href="{{ route('admin.register') }}">{{ __('Register') }}</a>
                 </li>
                 @endif
-                @endauth
-                @endif
-                <li class="nav-item">
+                @endguest
             </ul>
         </div>
     </div>
