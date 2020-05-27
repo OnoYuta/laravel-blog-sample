@@ -9,15 +9,15 @@
                 @if (Route::has('login'))
                 @auth
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url()->to('home') }}">{{ __('Home') }}</a>
+                    <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
                 </li>
                 @else
                 <li class="nav-item ml-auto">
-                    <a class="nav-link" href="{{ url()->to('login') }}">{{ __('Login') }}</a>
+                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                 </li>
                 @if (Route::has('register'))
                 <li class="nav-item ml-auto">
-                    <a class="nav-link" href="{{ url()->to('register') }}">{{ __('Register') }}</a>
+                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                 </li>
                 @endif
                 @endauth
