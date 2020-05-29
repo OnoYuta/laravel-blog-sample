@@ -1,4 +1,9 @@
 // カスタム
+main {
+    margin-top: $navbar-height;
+    flex: 1;
+}
+
 .site-title {
     margin: 50px 0 40px 0;
 }
