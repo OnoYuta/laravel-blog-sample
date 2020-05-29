@@ -22,9 +22,9 @@
 </head>
 
 <body>
-    <div id='app'>
+    <div id='app' class="vh-100 d-flex flex-column">
         <!-- nav-bar -->
-        @include('backend.includes.navbar')
+        @include('frontend.includes.navbar')
 
         <!-- content -->
         <main class="py-4">
