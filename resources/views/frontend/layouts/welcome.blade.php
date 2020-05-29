@@ -22,12 +22,14 @@
 </head>
 
 <body>
-    <div id='app'>
+    <div id='app' class="vh-100 d-flex flex-column">
         <!-- nav-bar -->
         @include('frontend.includes.navbar')
 
         <!-- content -->
-        @yield('content')
+        <main>
+            @yield('content')
+        </main>
 
         <!-- footer -->
         @include('frontend.includes.footer')
