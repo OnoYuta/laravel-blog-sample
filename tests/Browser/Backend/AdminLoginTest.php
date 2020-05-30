@@ -2,9 +2,11 @@
 
 namespace Tests\Browser\Backend;
 
+use AdministratorsTableSeeder;
 use App\Models\Administrator;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Schema;
 use Laravel\Dusk\Browser;
 use Tests\Browser\Pages\Backend\AdminLoginPage;
 use Tests\DuskTestCase;
@@ -58,6 +60,24 @@ class AdminLoginTest extends DuskTestCase
                 ->clickLink('ログアウト')
                 ->waitForText(__('Login'))
                 ->assertSee(__('Login'));
+        });
+    }
+
+    /**
+     * admin login as sample admin
+     *
+     * @return void
+     */
+    public function testAdminLoginAsSampleAdmin()
+    {
+        Schema::disableForeignKeyConstraints();
+        $this->seed(AdministratorsTableSeeder::class);
+        Schema::enableForeignKeyConstraints();
+
+        $this->browse(function (Browser $browser) {
+            $browser->visit(new AdminLoginPage())
+                ->press('@sampleLoginBtn')
+                ->assertRouteIs('admin.home', []);
         });
     }
 }
