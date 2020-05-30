@@ -1,4 +1,4 @@
-// カスタム
+// Custom
 body {
   background: #151515 url('../../images/header_background.jpg') no-repeat fixed left bottom;
   background-size: cover;
@@ -32,6 +32,16 @@ main {
     margin-bottom: 50px;
 }
 
+// Button
+.btn-primary {
+    color: white;
+    border-color: white;
+}
+
+.btn-primary:hover {
+    color: white;
+}
+
 a.btn {
     color: white;
 }
@@ -40,7 +50,7 @@ a.btn:hover {
     color: white;
 }
 
-// レスポンシブ
+// Responsive
 @media (max-width: map-get($grid-breakpoints, 'lg')){
     .site-title {
         font-size: 3.5rem;

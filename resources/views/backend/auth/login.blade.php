@@ -69,7 +69,7 @@
                                 {{Form::open(['route' => 'admin.login'])}}
                                 {{Form::hidden('username', config('account.sample.admin.username'))}}
                                 {{Form::hidden('password', config('account.sample.admin.password'))}}
-                                {{Form::submit(__('Login As A Sample User'), ['class' => 'btn btn-link', 'dusk' => 'sampleLoginBtn'])}}
+                                {{Form::submit(__('Login With Sample Account'), ['class' => 'btn btn-link', 'dusk' => 'sampleLoginBtn'])}}
                             </div>
                             <a href="{{ route('admin.password.request') }}" class="btn btn-link col-lg-6 col-12">{{ __('Forgot Your Password?') }}</a>
                         </div>

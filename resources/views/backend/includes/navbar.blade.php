@@ -10,11 +10,6 @@
                 <li class="nav-item ml-auto">
                     <a class="nav-link" href="{{ route('admin.login') }}">{{ __('Login') }}</a>
                 </li>
-                @if (Route::has('register'))
-                <li class="nav-item ml-auto">
-                    <a class="nav-link" href="{{ route('admin.register') }}">{{ __('Register') }}</a>
-                </li>
-                @endif
                 @endguest
             </ul>
         </div>
