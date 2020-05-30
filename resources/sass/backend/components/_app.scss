@@ -1,3 +1,19 @@
+body {
+  background: #151515 url('../../images/header_background.jpg') no-repeat fixed left bottom;
+  background-size: cover;
+}
+
 main {
     margin-top: $navbar-height;
+    flex: 1;
+}
+
+// Button
+.btn-primary {
+    color: white;
+    border-color: white;
+}
+
+.btn-primary:hover {
+    color: white;
 }

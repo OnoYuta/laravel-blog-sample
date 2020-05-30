@@ -3,7 +3,7 @@ $navbar-height: 55px;
 $enable-responsive-font-sizes: true;
 
 // Body
-$body-bg: darken(#f8fafc, 20%);
+$body-bg: #f8fafc;
 
 // Typography
 $font-family-sans-serif: 'Nunito', sans-serif;
@@ -11,13 +11,15 @@ $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
 // Colors
-$blue: #3490dc;
-$indigo: #6574cd;
-$purple: #9561e2;
-$pink: #f66d9b;
-$red: #e3342f;
-$orange: #f6993f;
-$yellow: #ffed4a;
-$green: #38c172;
-$teal: #4dc0b5;
-$cyan: #6cb2eb;
+$dark-sky-blue: #87b9ce !default;
+$wild-blue-yonder: #b1afc9 !default;
+$green: #586E58; // success
+$cyan: #173879; // info
+$yellow: #EBC336; // warning
+$red: #173879; // danger
+$gray-100: #F2F2F2; // light
+$gray-800: #102326; // dark
+
+// Bootstrap Thema 
+$primary:       $dark-sky-blue !default; // $blue 
+$secondary:     $wild-blue-yonder !default; // $gray-600 

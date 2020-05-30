@@ -1,4 +1,9 @@
 // カスタム
+body {
+  background: #151515 url('../../images/header_background.jpg') no-repeat fixed left bottom;
+  background-size: cover;
+}
+
 main {
     margin-top: $navbar-height;
     flex: 1;
@@ -28,6 +33,10 @@ main {
 }
 
 a.btn {
+    color: white;
+}
+
+a.btn:hover {
     color: white;
 }
 
