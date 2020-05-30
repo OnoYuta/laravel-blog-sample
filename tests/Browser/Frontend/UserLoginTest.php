@@ -5,9 +5,11 @@ namespace Tests\Browser\Frontend;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Schema;
 use Laravel\Dusk\Browser;
 use Tests\Browser\Pages\Frontend\UserLoginPage;
 use Tests\DuskTestCase;
+use UsersTableSeeder;
 
 class UserLoginTest extends DuskTestCase
 {
@@ -57,6 +59,24 @@ class UserLoginTest extends DuskTestCase
                 ->click('#navbarDropdown')
                 ->click('@logoutLink')
                 ->assertSee(__('Login'));
+        });
+    }
+
+    /**
+     * user login as sample admin
+     *
+     * @return void
+     */
+    public function testUserLoginAsSampleUser()
+    {
+        Schema::disableForeignKeyConstraints();
+        $this->seed(UsersTableSeeder::class);
+        Schema::enableForeignKeyConstraints();
+
+        $this->browse(function (Browser $browser) {
+            $browser->visit(new UserLoginPage())
+                ->press('@sampleLoginBtn')
+                ->assertRouteIs('home', []);
         });
     }
 }
