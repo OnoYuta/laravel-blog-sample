@@ -19,9 +19,9 @@ class AdministratorsTableSeeder extends Seeder
         DB::table($this->table)->truncate();
 
         factory(Administrator::class)->create([
-            'username'    => 'admin',
+            'username'    => config('account.sample.admin.username'),
             'email'       => 'admin@example.com',
-            'password'    => Hash::make('admin'),
+            'password'    => Hash::make(config('account.sample.admin.password')),
         ]);
 
         factory(Administrator::class, 10)->create();

@@ -19,9 +19,9 @@ class UsersTableSeeder extends Seeder
         DB::table($this->table)->truncate();
 
         factory(User::class)->create([
-            'username'    => 'user',
+            'username'    => config('account.sample.user.username'),
             'email'       => 'user@example.com',
-            'password'    => Hash::make('user'),
+            'password'    => Hash::make(config('account.sample.user.password')),
         ]);
 
         factory(User::class, 100)->create();
