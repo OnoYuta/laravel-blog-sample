@@ -35,8 +35,12 @@ test: ## Execute unit-test with phpunit
 	./vendor/bin/phpunit
 
 .PHONY: dusk
+ifeq (dusk,$(firstword $(MAKECMDGOALS)))
+  RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
+  $(eval $(RUN_ARGS):;@:)
+endif
 dusk: ## Execute E2E-test with dusk
-	php artisan dusk --env=testing
+	php artisan dusk --env=testing $(RUN_ARGS)
 
 .PHONY: ci
 ci: ## Execute CircleCI in local environment
