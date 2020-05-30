@@ -7,12 +7,12 @@
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+                <div class="card-body row justify-content-center">
+                    <div class="col-md-8">
+                        <form method="POST" action="{{ route('login') }}">
+                            @csrf
 
-                        <div class="form-group row justify-content-center">
-                            <div class="col-md-8">
+                            <div class="form-group">
                                 <div class="input-group mb-2">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="fas fa-user"></i></div>
@@ -25,10 +25,8 @@
                                     @enderror
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row justify-content-center">
-                            <div class="col-md-8">
+                            <div class="form-group">
                                 <div class="input-group mb-2">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="fas fa-key"></i></div>
@@ -41,40 +39,38 @@
                                     @enderror
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row justify-content-center">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                            <div class="form-group">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
-                                <label class="form-check-label" for="remember">
-                                    {{ __('Remember Me') }}
-                                </label>
+                                    <label class="form-check-label" for="remember">
+                                        {{ __('Remember Me') }}
+                                    </label>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group row justify-content-center">
-                            <div class="col-md-8 text-center text-white">
-                                <button type="submit" class="btn btn-primary btn-block">
-                                    {{ __('Login') }}
-                                </button>
+                            <div class="form-group row justify-content-center">
+                                <div class="text-center text-white col-sm-6">
+                                    <button type="submit" class="btn btn-primary btn-block">
+                                        {{ __('Login') }}
+                                    </button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
 
-                    </form>
-
-                    <div class="form-group row justify-content-center mb-0">
-                        <div class="row btn-group col-12" role="group">
-                            <div class="col-lg-6 col-12">
+                        <div class="btn-group col px-0 mx-0 mb-0 row" role="group">
+                            <div class="col-lg-6 px-0 col-12">
                                 {{Form::open(['route' => 'login'])}}
                                 {{Form::hidden('username', config('account.sample.user.username'))}}
                                 {{Form::hidden('password', config('account.sample.user.password'))}}
-                                {{Form::submit(__('Login With Sample Account'), ['class' => 'btn btn-link', 'dusk' => 'sampleLoginBtn'])}}
+                                {{Form::submit(__('Login With Sample Account'), ['class' => 'btn btn-link px-0', 'dusk' => 'sampleLoginBtn'])}}
                             </div>
-                            <a href="{{ route('password.request') }}" class="btn btn-link col-lg-6 col-12">{{ __('Forgot Your Password?') }}</a>
+                            <div class="col-lg-6 col-12 px-0 text-left text-lg-right">
+                                <a href="{{ route('password.request') }}" class="btn btn-link px-0">{{ __('Forgot Your Password?') }}</a>
+                            </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
