@@ -65,7 +65,12 @@
 
                     <div class="form-group row justify-content-center mb-0">
                         <div class="row btn-group col-12" role="group">
-                            <a href="{{ route('admin.password.request') }}" class="btn btn-link col-lg-6 col-12">{{ __('Login As A Sample User') }}</a>
+                            <div class="col-lg-6 col-12">
+                                {{Form::open(['route' => 'admin.login'])}}
+                                {{Form::hidden('username', config('account.sample.admin.username'))}}
+                                {{Form::hidden('password', config('account.sample.admin.password'))}}
+                                {{Form::submit(__('Login As A Sample User'), ['class' => 'btn btn-link'])}}
+                            </div>
                             <a href="{{ route('admin.password.request') }}" class="btn btn-link col-lg-6 col-12">{{ __('Forgot Your Password?') }}</a>
                         </div>
                     </div>
