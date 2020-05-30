@@ -65,7 +65,6 @@ class AdminResetPasswordTest extends DuskTestCase
 
         $this->browse(function (Browser $browser) use ($user, $url) {
             $browser->visit($url)
-                ->screenshot('before')
                 ->type('#email', $user->email)
                 ->type('#password', 'password')
                 ->type('#password-confirm', 'password')
