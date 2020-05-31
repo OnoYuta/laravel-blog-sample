@@ -23,7 +23,9 @@ class LaravelAdminSeeder extends Seeder
         ]);
 
         // add role to user.
-        Administrator::first()->roles()->save(Role::first());
+        foreach (Administrator::all() as $administrator) {
+            $administrator->roles()->save(Role::first());
+        }
 
         //create a permission
         Permission::truncate();
