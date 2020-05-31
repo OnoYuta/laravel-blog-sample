@@ -1,8 +1,8 @@
 @extends('backend.layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
+<div class="container h-100">
+    <div class="row h-100 justify-content-center align-items-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
@@ -76,7 +76,7 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-6 offset-md-4 text-right">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
