@@ -12,16 +12,17 @@ $font-family-base:            $font-family-sans-serif $font-family-japanese !def
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
 
-// Colors
-$dark-sky-blue: #87b9ce !default;
-$wild-blue-yonder: #b1afc9 !default;
-$green: #586E58; // success
-$cyan: #173879; // info
-$yellow: #EBC336; // warning
-$red: #173879; // danger
-$gray-100: #F2F2F2; // light
-$gray-800: #102326; // dark
+// Thema Colors
+$blue: #7AB6BE;
+$ming: #48767f; // primary
+$gray-600: #52554E; // secondary
+$keppei: #3DBB9F;
+$green: #339481; // success
+$cyan: #163640; // info
+$yellow: #BFA842; // warning
+$red: #C71D61; // danger
+$gray-100: #EDEDED; // light
+$gray-800: #141E24; // dark
 
 // Bootstrap Thema 
-$primary:       $dark-sky-blue !default; // $blue 
-$secondary:     $wild-blue-yonder !default; // $gray-600 
+$primary:       $ming !default;

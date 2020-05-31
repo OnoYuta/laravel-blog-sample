@@ -11,7 +11,7 @@
                 {{Form::submit(__('Login With Sample Account'), ['class' => 'btn btn-primary col', 'dusk' => 'sampleLoginBtn'])}}
             </div>
             <div class="col-xl-3 col-lg-4 col-md-5 col-12 text-md-left">
-                <a href="{{ route('login') }}" class="btn btn-secondary col">{{ __('Show Login Form') }}</a>
+                <a href="{{ route('login') }}" class="btn btn-success col">{{ __('Show Login Form') }}</a>
             </div>
         </div>
     </div>
