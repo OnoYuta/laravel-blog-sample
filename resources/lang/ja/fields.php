@@ -7,7 +7,6 @@ return [
     'Environment' => '環境',
     'Extensions' => '拡張機能',
     'Management' => '管理',
-    'Admins' => '管理者',
     'Author' => '作成者',
     'Roles' => '役割',
     'Permission' => '権限',
@@ -16,6 +15,15 @@ return [
     'Id' => 'ID',
     'Created at' => '作成日',
     'Updated at' => '更新日',
+
+    // Post fields
+    'Admins' => '管理者',
+    'Name' => '名前',
+    'Username' => 'ログインID',
+    'Email' => 'メールアドレス',
+    'Password' => 'パスワード',
+    'Password Confirmation' => '確認用パスワード',
+
 
     // Post fields
     'Posts' => '記事',

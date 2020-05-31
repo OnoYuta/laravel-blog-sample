@@ -8,8 +8,8 @@ Route::middleware('web')->group(function () {
     Route::get('logout', 'Auth\LoginController@logout')->name('admin.logout');
 
     // Redirect route for Laravel-admin...
-    Route::redirect('auth/login', '/login', 301);
     Route::redirect('auth/logout', '/logout', 301);
+    Route::redirect('auth/setting', '/setting', 301);
 
     // Registration Routes...
     Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('admin.register');
@@ -35,18 +35,18 @@ Route::middleware(['web', 'auth:admin', 'laravel-admin', 'verified'])->group(fun
     Route::get('/', 'HomeController@index')->name('admin.home');
 
     // Default Routes...
-    Route::get('auth/setting', 'Auth\AuthController@getSetting')->name('admin.setting');
-    Route::put('auth/setting', 'Auth\AuthController@putSetting');
+    Route::get('setting', 'Auth\AuthController@getSetting')->name('admin.setting');
+    Route::put('setting', 'Auth\AuthController@putSetting');
 
-    Route::resource('auth/administrators', '\Encore\Admin\Controllers\UserController')->names('admin.auth.administrators');
-    Route::resource('auth/roles', '\Encore\Admin\Controllers\RoleController')->names('admin.auth.roles');
-    Route::resource('auth/permissions', '\Encore\Admin\Controllers\PermissionController')->names('admin.auth.permissions');
-    Route::resource('auth/menu', '\Encore\Admin\Controllers\MenuController', ['except' => ['create']])->names('admin.auth.menu');
-    Route::resource('auth/logs', '\Encore\Admin\Controllers\LogController', ['only' => ['index', 'destroy']])->names('admin.auth.logs');
+    Route::resource('roles', '\Encore\Admin\Controllers\RoleController')->names('admin.auth.roles');
+    Route::resource('permissions', '\Encore\Admin\Controllers\PermissionController')->names('admin.auth.permissions');
+    Route::resource('menu', '\Encore\Admin\Controllers\MenuController', ['except' => ['create']])->names('admin.auth.menu');
+    Route::resource('logs', '\Encore\Admin\Controllers\LogController', ['only' => ['index', 'destroy']])->names('admin.auth.logs');
 
     Route::post('_handle_form_', '\Encore\Admin\Controllers\HandleController@handleForm')->name('admin.handle-form');
     Route::post('_handle_action_', '\Encore\Admin\Controllers\HandleController@handleAction')->name('admin.handle-action');
 
     // Resource Routes...
+    Route::resource('administrators', 'AdministratorController')->names('admin.administrators');
     Route::resource('posts', 'PostController')->names('admin.posts');
 });
