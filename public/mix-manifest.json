@@ -1,6 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
     "/backend/css/app.css": "/backend/css/app.css",
+    "/backend/css/laravel-admin.css": "/backend/css/laravel-admin.css",
     "/frontend/css/app.css": "/frontend/css/app.css",
     "/frontend/css/welcome.css": "/frontend/css/welcome.css"
 }

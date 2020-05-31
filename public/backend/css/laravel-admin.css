@@ -1,0 +1,132 @@
+@import url(https://fonts.googleapis.com/css2?family=Quicksand&display=swap);@charset "UTF-8";
+
+/* Body */
+
+body {
+  font-family: "Quicksand", sans-serif "Century Gothic", "\30D2\30E9\30AE\30CE\89D2\30B4   ProN W3", "Hiragino Kaku Gothic ProN", 游ゴシック体, YuGothic, "Yu Gothic", メイリオ, Meiryo !important;
+}
+
+/* Header */
+
+.skin-blue-light .main-header .logo {
+  background-color: #141E24 !important;
+}
+
+.skin-blue-light .main-header .navbar {
+  background-color: #141E24 !important;
+}
+
+.skin-blue-light .main-header .navbar .sidebar-toggle:hover {
+  background-color: #141E24 !important;
+}
+
+/* Side Bar */
+
+.skin-blue-light .sidebar a {
+  color: #EDEDED !important;
+}
+
+.skin-blue-light .sidebar-menu > li.header {
+  color: #EDEDED !important;
+  background-color: #141E24 !important;
+}
+
+.skin-blue-light .wrapper,
+.skin-blue-light .main-sidebar,
+.skin-blue-light .left-side {
+  background-color: #141E24 !important;
+}
+
+.skin-blue-light .sidebar-menu > li:hover > a,
+.skin-blue-light .sidebar-menu > li.active > a {
+  background-color: #141E24 !important;
+}
+
+.skin-blue-light .sidebar-menu > li > .treeview-menu {
+  background-color: #141E24 !important;
+}
+
+.skin-blue-light.sidebar-mini.sidebar-collapse .sidebar-menu > li > .treeview-menu {
+  border-left: 1px solid #141E24 !important;
+}
+
+/* Main */
+
+.content-wrapper,
+.right-side {
+  background-color: #EDEDED !important;
+}
+
+a {
+  color: #7AB6BE;
+}
+
+span.bg-light-blue,
+span.label-primary,
+span.modal-primary .modal-body {
+  background-color: #3DBB9F !important;
+}
+
+span.bg-green,
+span.calloutspan.callout-success,
+span.alert-success,
+span.label-success,
+span.modal-success span.modal-body {
+  background-color: #339481 !important;
+}
+
+/* Grid */
+
+.btn-dropbox {
+  background-color: #7AB6BE !important;
+}
+
+.btn-instagram {
+  background-color: #48767f !important;
+}
+
+.btn-twitter {
+  background-color: #7AB6BE !important;
+}
+
+.btn-primary {
+  background-color: #7AB6BE !important;
+  border-color: #7AB6BE !important;
+}
+
+.btn-success {
+  background-color: #339481 !important;
+  border-color: #339481 !important;
+}
+
+.btn-warning {
+  background-color: #BFA842 !important;
+  border-color: #BFA842 !important;
+}
+
+.pagination > .active > a,
+.pagination > .active > a:focus,
+.pagination > .active > a:hover,
+.pagination > .active > span,
+.pagination > .active > span:focus,
+.pagination > .active > span:hover {
+  background-color: #7AB6BE !important;
+  border-color: #7AB6BE !important;
+}
+
+/* Footer */
+
+.main-footer {
+  background-color: #141E24 !important;
+  color: #a1a1a1 !important;
+}
+
+.main-footer a {
+  color: #EDEDED !important;
+}
+
+.skin-blue-light .content-wrapper,
+.skin-blue-light .main-footer {
+  border-left: 1px solid #263945 !important;
+}
+

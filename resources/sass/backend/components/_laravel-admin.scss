@@ -1,0 +1,112 @@
+/* Body */
+
+body {
+  font-family: $font-family-base !important;
+}
+
+/* Header */
+
+.skin-blue-light .main-header .logo {
+  background-color: $gray-800 !important;
+}
+
+.skin-blue-light .main-header .navbar {
+  background-color: $gray-800 !important;
+}
+
+.skin-blue-light .main-header .navbar .sidebar-toggle:hover {
+  background-color: $gray-800 !important;
+}
+
+/* Side Bar */
+
+.skin-blue-light .sidebar a {
+  color: $gray-100 !important;
+}
+
+.skin-blue-light .sidebar-menu>li.header {
+    color: $gray-100 !important;
+    background-color: $gray-800 !important;
+}
+
+.skin-blue-light .wrapper, .skin-blue-light .main-sidebar, .skin-blue-light .left-side {
+  background-color: $gray-800 !important;
+}
+
+.skin-blue-light .sidebar-menu>li:hover>a, .skin-blue-light .sidebar-menu>li.active>a {
+  background-color: $gray-800 !important;
+}
+
+.skin-blue-light .sidebar-menu>li>.treeview-menu {
+  background-color: $gray-800 !important;
+}
+
+.skin-blue-light.sidebar-mini.sidebar-collapse .sidebar-menu>li>.treeview-menu {
+  border-left: 1px solid $gray-800 !important;
+}
+
+/* Main */
+
+.content-wrapper, .right-side {
+  background-color: $gray-100 !important;
+}
+
+a {
+  color: $blue;
+}
+
+span.bg-light-blue, span.label-primary, span.modal-primary .modal-body {
+  background-color: $keppei !important;
+}
+
+span.bg-green, span.calloutspan.callout-success, span.alert-success, span.label-success, span.modal-success span.modal-body {
+  background-color: $green !important;
+}
+
+/* Grid */
+.btn-dropbox {
+  background-color: $blue !important;
+}
+
+.btn-instagram {
+  background-color: $ming !important;
+}
+
+.btn-twitter{
+  background-color: $blue !important;
+}
+
+.btn-primary {
+  background-color: $blue !important;
+  border-color: $blue !important;
+}
+
+.btn-success {
+  background-color: $green !important;
+  border-color: $green !important;
+}
+
+.btn-warning {
+  background-color: $yellow !important;
+  border-color: $yellow !important;
+}
+
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+  background-color: $blue !important;
+  border-color: $blue !important;
+}
+
+/* Footer */
+
+.main-footer {
+  background-color: $gray-800 !important;
+  color: darken($gray-100, 30%) !important;
+}
+
+.main-footer a {
+  color: $gray-100 !important;
+}
+
+.skin-blue-light .content-wrapper, .skin-blue-light .main-footer {
+  border-left: 1px solid lighten($gray-800, 10%) !important;
+}
