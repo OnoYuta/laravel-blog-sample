@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend\Admin;
 
 use App\Models\LaravelAdmin\Administrator;
+use Encore\Admin\Auth\Database\Role;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -99,11 +100,6 @@ class AdministratorController extends AdminController
             });
         $form->ignore(['password_confirmation']);
 
-        $form->multipleSelect('roles', trans('admin.roles'))
-            ->options($roleModel::all()->pluck('name', 'id'))
-            ->default($roleModel::where('name', 'Administrator')->first()->id)
-            ->readonly();
-
         $form->display('created_at', trans('admin.created_at'));
         $form->display('updated_at', trans('admin.updated_at'));
 
@@ -112,6 +108,11 @@ class AdministratorController extends AdminController
             if ($form->password && $form->model()->password != $form->password) {
                 $form->password = Hash::make($form->password);
             }
+        });
+
+        $form->saved(function (Form $form) {
+            // @phpstan-ignore-next-line
+            $form->model()->roles()->save(Role::first());
         });
 
         return $form;
