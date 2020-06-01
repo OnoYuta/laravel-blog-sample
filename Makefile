@@ -41,6 +41,7 @@ ifeq (dusk,$(firstword $(MAKECMDGOALS)))
 endif
 dusk: ## Execute E2E-test with dusk
 	php artisan dusk --env=testing $(RUN_ARGS)
+	@make db-fresh
 
 .PHONY: ci
 ci: ## Execute CircleCI in local environment
