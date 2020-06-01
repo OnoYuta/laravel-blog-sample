@@ -22,7 +22,7 @@ class AdminLoginTest extends DuskTestCase
     }
 
     /**
-     * user login
+     * admin login
      *
      * @return void
      */
@@ -30,14 +30,14 @@ class AdminLoginTest extends DuskTestCase
     {
         $password = $this->faker->unique()->safeEmail;
 
-        $user = factory(Administrator::class)->create([
+        $admin = factory(Administrator::class)->create([
             'username'  => $this->faker->unique()->userName,
             'password'  => bcrypt($password),
         ]);
 
-        $this->browse(function (Browser $browser) use ($user, $password) {
+        $this->browse(function (Browser $browser) use ($admin, $password) {
             $browser->visit(new AdminLoginPage())
-                ->type('@username', $user->username)
+                ->type('@username', $admin->username)
                 ->type('@password', $password)
                 ->press('@submit')
                 ->assertRouteIs('admin.home', []);
@@ -45,16 +45,16 @@ class AdminLoginTest extends DuskTestCase
     }
 
     /**
-     * user logout
+     * admin logout
      *
      * @return void
      */
     public function testAdminLogout()
     {
-        $user = factory(Administrator::class)->create();
+        $admin = factory(Administrator::class)->create();
 
-        $this->browse(function (Browser $browser) use ($user) {
-            $browser->loginAs($user)
+        $this->browse(function (Browser $browser) use ($admin) {
+            $browser->loginAs($admin)
                 ->visit(route('admin.home', [], false))
                 ->click('.dropdown.user.user-menu')
                 ->clickLink('ログアウト')
