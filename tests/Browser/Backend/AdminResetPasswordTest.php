@@ -3,7 +3,6 @@
 namespace Tests\Browser\Frontend;
 
 use App\Models\Administrator;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -17,7 +16,6 @@ use Tests\DuskTestCase;
 
 class AdminResetPasswordTest extends DuskTestCase
 {
-    use DatabaseMigrations;
     use WithFaker;
 
     public function baseUrl()

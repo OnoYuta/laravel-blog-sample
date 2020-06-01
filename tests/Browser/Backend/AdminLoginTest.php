@@ -2,18 +2,14 @@
 
 namespace Tests\Browser\Backend;
 
-use AdministratorsTableSeeder;
 use App\Models\Administrator;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\Schema;
 use Laravel\Dusk\Browser;
 use Tests\Browser\Pages\Backend\AdminLoginPage;
 use Tests\DuskTestCase;
 
 class AdminLoginTest extends DuskTestCase
 {
-    use DatabaseMigrations;
     use WithFaker;
 
     public function baseUrl()
@@ -70,10 +66,6 @@ class AdminLoginTest extends DuskTestCase
      */
     public function testAdminLoginAsSampleAdmin()
     {
-        Schema::disableForeignKeyConstraints();
-        $this->seed(AdministratorsTableSeeder::class);
-        Schema::enableForeignKeyConstraints();
-
         $this->browse(function (Browser $browser) {
             $browser->visit(new AdminLoginPage())
                 ->press('@sampleLoginBtn')
