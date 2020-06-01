@@ -5,18 +5,23 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="mainNav">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="{{ route('posts.index') }}" class="text-light">{{ __('fields.Posts') }}</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-md-auto">
                 @guest
-                <li class="nav-item ml-auto">
+                <li class="nav-item ml-md-auto">
                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                 </li>
                 @if (Route::has('register'))
-                <li class="nav-item ml-auto">
+                <li class="nav-item ml-md-auto">
                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                 </li>
                 @endif
                 @else
-                <li class="nav-item ml-auto dropdown">
+                <li class="nav-item ml-md-auto dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
@@ -35,5 +40,4 @@
                 @endguest
             </ul>
         </div>
-    </div>
 </nav>

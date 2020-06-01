@@ -5,6 +5,7 @@ Route::middleware('web')->group(function () {
     Route::get('/', function () {
         return view('frontend.welcome');
     });
+    Route::resource('/posts', 'PostController', ['only' => ['index']])->names('posts');
 
     Auth::routes(['verify' => true]);
 });
