@@ -4,7 +4,6 @@ namespace Tests\Browser\Frontend;
 
 use App\Models\User;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -18,7 +17,6 @@ use Tests\DuskTestCase;
 
 class UserResetPasswordTest extends DuskTestCase
 {
-    use DatabaseMigrations;
     use SendsPasswordResetEmails;
     use WithFaker;
 

@@ -2,13 +2,9 @@
 
 namespace Tests\Browser\Backend;
 
-use AdministratorsTableSeeder;
 use App\Models\LaravelAdmin\Administrator;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Support\Facades\Schema;
 use Laravel\Dusk\Browser;
-use LaravelAdminSeeder;
 use Tests\Browser\Pages\Backend\AdminDashboard;
 use Tests\Browser\Pages\Backend\AdminLoginPage;
 use Tests\Browser\Pages\Backend\AdminUserSetting;
@@ -16,7 +12,6 @@ use Tests\DuskTestCase;
 
 class AdminRegisterTest extends DuskTestCase
 {
-    use DatabaseMigrations;
     use WithFaker;
 
     public function baseUrl()
@@ -31,11 +26,6 @@ class AdminRegisterTest extends DuskTestCase
      */
     public function testAdminRegister()
     {
-        Schema::disableForeignKeyConstraints();
-        $this->seed(AdministratorsTableSeeder::class);
-        $this->seed(LaravelAdminSeeder::class);
-        Schema::enableForeignKeyConstraints();
-
         $newUsername = $this->faker->unique()->userName;
         while (Administrator::where('username', $newUsername)->exists()) {
             $newUsername = $this->faker->unique()->userName;
@@ -71,11 +61,6 @@ class AdminRegisterTest extends DuskTestCase
      */
     public function testAdminSetting()
     {
-        Schema::disableForeignKeyConstraints();
-        $this->seed(AdministratorsTableSeeder::class);
-        $this->seed(LaravelAdminSeeder::class);
-        Schema::enableForeignKeyConstraints();
-
         $newName = $this->faker->name;
         while (Administrator::where('name', $newName)->exists()) {
             $newName = $this->faker->name;
