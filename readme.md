@@ -2,6 +2,12 @@
 
 Sample blog project featuring many basic and general topics of Laravel 6.x.
 
+## Demo
+
+![1aebd339f99e8e053dd782ce45e75d1c](https://user-images.githubusercontent.com/49770211/83761955-f353d080-a6b1-11ea-9aa5-8838e26f15e3.gif)
+
+![768761f34bb19eac6cd8dc340c5ba05b](https://user-images.githubusercontent.com/49770211/83762766-d966bd80-a6b2-11ea-8e72-7eaca96b52e9.gif)
+
 ## Topics
 
 This project is featuring many basic and general topics like below:
