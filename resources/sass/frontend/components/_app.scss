@@ -9,11 +9,11 @@ main {
 }
 
 // Button
-.btn-primary {
+.btn-primary, .btn-warning {
     color: white;
     border-color: white;
 }
 
-.btn-primary:hover {
+.btn-primary:hover, .btn-warning:hover {
     color: white;
 }

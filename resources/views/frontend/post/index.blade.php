@@ -11,7 +11,7 @@
                 <img src="{{ asset('images/header_post.jpg') }}" alt="post-list-header" class="img-fluid">
             </div>
             <!-- article header content -->
-            <div class="col-12 col-xl-4 bg-primary">
+            <div class="col-12 col-xl-4 bg-info">
                 <div class="container py-5 text-white">
                     <span class="text-light">subtitle</span>
                     <h2 class="h2">The title of the recommended article</h2>
@@ -29,52 +29,34 @@
         <!-- Three columns of text below the carousel -->
         <div class="row text-center">
             <div class="col-lg-4 pb-4">
-                <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
-                    xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"
-                    aria-label="Placeholder: 140x140">
-                    <title>Placeholder</title>
-                    <rect fill="#777" width="100%" height="100%"></rect><text fill="#777" dy=".3em" x="50%"
-                        y="50%">140x140</text>
-                </svg>
-                <h2>Heading</h2>
+                <i class="category-icon text-success mb-3 fas fa-code"></i>
+                <h2>Category</h2>
                 <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh
                     ultricies
                     vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent
                     commodo
                     cursus magna.</p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+                <p><a class="btn btn-warning" href="#" role="button">View details »</a></p>
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-4 pb-4">
-                <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
-                    xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"
-                    aria-label="Placeholder: 140x140">
-                    <title>Placeholder</title>
-                    <rect fill="#777" width="100%" height="100%"></rect><text fill="#777" dy=".3em" x="50%"
-                        y="50%">140x140</text>
-                </svg>
-                <h2>Heading</h2>
+                <i class="category-icon text-success mb-3 far fa-newspaper"></i>
+                <h2>Category</h2>
                 <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
                     Cras
                     mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor
                     mauris
                     condimentum nibh.</p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+                <p><a class="btn btn-warning" href="#" role="button">View details »</a></p>
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-4 pb-4">
-                <svg class="bd-placeholder-img rounded-circle" width="140" height="140"
-                    xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"
-                    aria-label="Placeholder: 140x140">
-                    <title>Placeholder</title>
-                    <rect fill="#777" width="100%" height="100%"></rect><text fill="#777" dy=".3em" x="50%"
-                        y="50%">140x140</text>
-                </svg>
-                <h2>Heading</h2>
+                <i class="category-icon text-success mb-3 far fa-lightbulb"></i>
+                <h2>Category</h2>
                 <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id
                     ligula
                     porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum
                     nibh, ut
                     fermentum massa justo sit amet risus.</p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details »</a></p>
+                <p><a class="btn btn-warning" href="#" role="button">View details »</a></p>
             </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
 
@@ -100,13 +82,7 @@
                 </div>
             </div>
             <div class="col-md-5 d-none d-md-block">
-                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-                    height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"
-                    focusable="false" role="img" aria-label="Placeholder: 500x250">
-                    <title>Placeholder</title>
-                    <rect fill="#eee" width="100%" height="100%"></rect><text fill="#aaa" dy=".3em" x="50%"
-                        y="50%">500x250</text>
-                </svg>
+                <img src="{{ asset('images/header_post.jpg') }}" alt="post-list-header" class="post-thumb">
             </div>
         </div>
 
@@ -129,13 +105,7 @@
                 </div>
             </div>
             <div class="col-md-5 d-none d-md-block order-md-1">
-                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-                    height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"
-                    focusable="false" role="img" aria-label="Placeholder: 500x250">
-                    <title>Placeholder</title>
-                    <rect fill="#eee" width="100%" height="100%"></rect><text fill="#aaa" dy=".3em" x="50%"
-                        y="50%">500x250</text>
-                </svg>
+                <img src="{{ asset('images/header_post.jpg') }}" alt="post-list-header" class="post-thumb">
             </div>
         </div>
 
@@ -158,13 +128,7 @@
                 </div>
             </div>
             <div class="col-md-5 d-none d-md-block">
-                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-                    height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"
-                    focusable="false" role="img" aria-label="Placeholder: 500x250">
-                    <title>Placeholder</title>
-                    <rect fill="#eee" width="100%" height="100%"></rect><text fill="#aaa" dy=".3em" x="50%"
-                        y="50%">500x250</text>
-                </svg>
+                <img src="{{ asset('images/header_post.jpg') }}" alt="post-list-header" class="post-thumb">
             </div>
         </div>
 
