@@ -9,8 +9,10 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "aws/aws-sdk-php": "^3.140",
         "encore/laravel-admin": "^1.7",
         "fideloper/proxy": "^4.0",
+        "guzzlehttp/guzzle": "^6.5",
         "laravel-admin-ext/ckeditor": "^1.0",
         "laravel/framework": "^6.0",
         "laravel/tinker": "^1.0",
