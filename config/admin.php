@@ -250,7 +250,7 @@ return [
     | Set a default avatar for newly created users.
     |
     */
-    'default_avatar' => '/images/none.png',
+    'default_avatar' => 'https://laravel-blog-sample-bucket.s3-ap-northeast-1.amazonaws.com/none.png',
 
     /*
     |--------------------------------------------------------------------------

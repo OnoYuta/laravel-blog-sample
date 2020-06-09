@@ -7,8 +7,7 @@
         <div class="row">
             <!-- article header img -->
             <div class="col-12 col-xl-8 px-0 bg-primary">
-                <!-- <img src="{{ asset('images/header_post.jpg') }}" alt="post-list-header" class="article-header-img"> -->
-                <img src="{{ asset('images/header_post.jpg') }}" alt="post-list-header" class="img-fluid">
+                <img src="https://laravel-blog-sample-bucket.s3-ap-northeast-1.amazonaws.com/header_post.jpg" alt="post-list-header" class="img-fluid">
             </div>
             <!-- article header content -->
             <div class="col-12 col-xl-4 bg-info">
@@ -17,8 +16,7 @@
                     <h2 class="h2">The title of the recommended article</h2>
                     <p class="text-truncate">Display the text of the article, but omit it if the
                         number of characters does not fit in the line.</p>
-                    <button type="button" class="btn btn-outline-light"><i
-                            class="far fa-arrow-alt-circle-right"></i>&nbsp;Read more</button>
+                    <button type="button" class="btn btn-outline-light"><i class="far fa-arrow-alt-circle-right"></i>&nbsp;Read more</button>
                 </div>
             </div>
         </div>
@@ -76,13 +74,12 @@
                         tellus
                         ac cursus
                         commodo.</p>
-                    <button type="button" class="btn btn-outline-success"><i
-                            class="far fa-arrow-alt-circle-right"></i>&nbsp;Read
+                    <button type="button" class="btn btn-outline-success"><i class="far fa-arrow-alt-circle-right"></i>&nbsp;Read
                         more</button>
                 </div>
             </div>
             <div class="col-md-5 d-none d-md-block">
-                <img src="{{ asset('images/header_post.jpg') }}" alt="post-list-header" class="post-thumb">
+                <img src="https://laravel-blog-sample-bucket.s3-ap-northeast-1.amazonaws.com/header_post.jpg" alt="post-list-header" class="post-thumb">
             </div>
         </div>
 
@@ -99,13 +96,12 @@
                         tellus
                         ac cursus
                         commodo.</p>
-                    <button type="button" class="btn btn-outline-success"><i
-                            class="far fa-arrow-alt-circle-right"></i>&nbsp;Read
+                    <button type="button" class="btn btn-outline-success"><i class="far fa-arrow-alt-circle-right"></i>&nbsp;Read
                         more</button>
                 </div>
             </div>
             <div class="col-md-5 d-none d-md-block order-md-1">
-                <img src="{{ asset('images/header_post.jpg') }}" alt="post-list-header" class="post-thumb">
+                <img src="https://laravel-blog-sample-bucket.s3-ap-northeast-1.amazonaws.com/header_post.jpg" alt="post-list-header" class="post-thumb">
             </div>
         </div>
 
@@ -122,13 +118,12 @@
                         tellus
                         ac cursus
                         commodo.</p>
-                    <button type="button" class="btn btn-outline-success"><i
-                            class="far fa-arrow-alt-circle-right"></i>&nbsp;Read
+                    <button type="button" class="btn btn-outline-success"><i class="far fa-arrow-alt-circle-right"></i>&nbsp;Read
                         more</button>
                 </div>
             </div>
             <div class="col-md-5 d-none d-md-block">
-                <img src="{{ asset('images/header_post.jpg') }}" alt="post-list-header" class="post-thumb">
+                <img src="https://laravel-blog-sample-bucket.s3-ap-northeast-1.amazonaws.com/header_post.jpg" alt="post-list-header" class="post-thumb">
             </div>
         </div>
 
