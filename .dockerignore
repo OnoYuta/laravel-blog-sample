@@ -17,6 +17,9 @@ tests
 # storage
 storage/mysql
 
+# public
+public/images
+
 # js/css
 node_modules
 package.json
