@@ -1,0 +1,24 @@
+# conf/utils
+.editorconfig
+.git*
+.php*
+.styleci.yml
+docker-compose.yml
+Makefile
+
+# docs
+docs
+readme.md
+
+# tests
+phpunit.xml
+tests
+
+# storage
+storage/mysql
+
+# js/css
+node_modules
+package.json
+yarn.lock
+webpack.mix.js
