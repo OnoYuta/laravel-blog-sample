@@ -173,8 +173,8 @@ jobs:
       - test-unittest
       - test-e2etest
   push_image:
-    executor:
-      name: push_image
+    docker:
+      - image: docker:18.09.0
     steps:
       - checkout
       - setup_remote_docker
