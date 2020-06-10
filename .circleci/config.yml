@@ -20,6 +20,10 @@ executors:
       - MAIL_USERNAME:
       - MAIL_PASSWORD:
       - MAIL_ENCRYPTION: ''
+  push_image:
+    working_directory: ~/repo
+    docker:
+      - image: circleci/python:3-stretch-browsers
 commands:
   add-hosts-for-test:
     steps:
@@ -168,9 +172,9 @@ jobs:
       - test-static-code-analysis
       - test-unittest
       - test-e2etest
-  build_image:
+  push_image:
     executor:
-      name: default
+      name: push_image
     steps:
       - checkout
       - setup_remote_docker
@@ -183,7 +187,7 @@ workflows:
   build-test-deploy:
     jobs:
       - build
-      - build_image:
+      - push_image:
           requires:
             - build
           filters:
