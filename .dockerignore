@@ -15,6 +15,10 @@ phpunit.xml
 tests
 
 # storage
+storage/app/public/*
+storage/framework/cache/data/*
+storage/framework/sessions/*
+storage/framework/views/*
 storage/mysql
 
 # public
